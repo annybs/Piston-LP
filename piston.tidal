@@ -50,9 +50,10 @@ d1 $ sound "{k(3,8), [~ ~ sn [~ sn*3]/2]}/2"
 d5 silence
 d2 $ sound "{wt/2, [~ wtsn]/8}"
 
+d1 $ within (0.5, 1) (chop 8) $ sound "{k(3,8), [~ ~ sn [~ sn*3]/2]}/2"
+
 d3 $ (every 2 $ within (0.25, 0.75) (0.5 ~>)) $ slow 8 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
 
-d1 $ within (0.5, 1) (chop 8) $ sound "{k(3,8), [~ ~ sn [~ sn*3]/2]}/2"
 d1 $ every 3 (density (5%4)) $ within (0.5, 1) (chop 8) $ sound "{k(3,8), [~ ~ sn [~ sn*3]/2]}/2"
 
 d1 silence
@@ -70,7 +71,6 @@ d6 $ sound (samples "[[ff bz]*2 [~ bz*2]]/2" $ slow 2 $ run 5)
    |+| shape ((/5) <$> slow (5%3) sinewave1)
 --   |+| gain "0.1"
 
-d3 silence
 d1 $ sound "[k [sn ~ ~ wt] k*2 sn]/4"
 
 d6 $ sound (samples "[[ff bz]*2 [~ bz*2]]/2" $ slow 2 $ run 5)
@@ -83,16 +83,17 @@ d6 $ sound (samples "[[ff bz]*2 [~ bz*2]]/2" $ slow 2 $ run 5)
 d3 $ every 2 (0.5 <~) $ slow 4 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| vowel "i"
 
-d1 $ sound "[k [sn ~ ~ k] k*2 sn]/4"
+--d1 $ sound "[k [sn ~ ~ k] k*2 sn]/4"
 
---d7 $ jux ((1%8) <~) $ chop 16 $ sound "[ice [~ ice] ~ ~]/4"
-d7 $ within (1, 2) rev $ jux ((1%8) <~) $ chop 16 $ sound "[ice [~ ice] ~ ~]/4"
+d7 $ jux ((1%8) <~) $ chop 16 $ sound "[ice [~ ice] ~ ~]/4"
+--d7 $ within (1, 2) rev $ jux ((1%8) <~) $ chop 16 $ sound "[ice [~ ice] ~ ~]/4"
    |+| gain "0.7"
 
 d3 $ every 2 (0.5 <~) $ slow 4 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| vowel "o i"
 
 d6 silence
+d7 silence
 
 -- d1 $ sound "[k*2 [sn ~ ~ wt] k*2 sn]/4"
 
@@ -102,15 +103,29 @@ piston iii
 
 d2 silence
 d1 silence
-d7 silence
 
 d3 $ within (1%3, 2%3) (|+| gain "0.5") $ every 2 (0.5 <~) $ slow 4 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| vowel "o i"
 
-d2 $ slow (9%6) $ sound "hh*2"
-d1 $ slow (9%6) $ sound "[k*2 [sn ~ ~ k] [~ ~ [~ wt] k] [sn wtsn/4]]/4"
+d2 $ slow (3%2) $ sound "hh*2"
+d1 $ slow (3%2) $ sound "[k*2 [sn ~ ~ ~ k] [~ ~ ~ ~ k] [sn [sn*2]/4]]/4"
 
 d3 silence
+
+d3 $ slow (3%2) . slow 4 $ rev . chop 24 $ bassParams $ sound "[dubb dubb:1]/2"
+|+| vowel "e e i"
+|+| cutoff "0.02" |+| resonance "0.1"
+
+d2 $ slow (3%2) $ sound "[hh*2 [hh wt] hh*2 !]/4"
+
+d3 $ slow (3%2) . slow 4 $ rev . chop 24 $ bassParams $ sound "[dubb dubb:1]/2"
+|+| vowel "e e i"
+
+d1 silence
+
+{-
+piston iv
+-}
 
 d1 $ sound "[k [sn k] [k sn] [~ sn] [~ k] sn [k sn]]/7"
 
@@ -164,7 +179,6 @@ d7 $ slow 5 . chop 15 $ sound "ice"
 d1 $ within (0, 0.5) (jux ((1%3) ~>)) $ sound "[k [sn ~ k] [~ ~ sn] ~]/8"
 
 d6 silence
-d3 silence
 d7 silence
 d2 silence
 
@@ -174,10 +188,16 @@ piston x
 
 d3 $ slow 16 $ rev . chop 32 $ bassParams $ sound "[dubb dubb:1]/2"
 
-d1 $ sound "[k [sn ~ ~ wt] [~ k] sn [~ k]]/5"
-d1 $ sound "[k [sn ~ ~ wt] [~ k] sn]/4"
+d6 $ sound (samples "[[ff bz]*2 [~ bz*2]]/2" $ slow 2 $ run 5)
+   |+| begin "0.7" |+| end "0.85"
+   |+| hcutoff "0.04" |+| hresonance "0.1"
+   |+| shape ((/5) <$> slow (5%3) sinewave1)
+
+d1 $ within (0, 0.5) (superimpose ((1%3) ~>)) $ sound "[k [sn ~ k] [~ ~ sn] ~]/8"
 
 d3 $ slow 16 $ rev . chop 64 $ bassParams $ sound "[dubb dubb:1]/2"
+
+d1 silence
 
 d6 $ sound (samples "[[ff bz]*2 [~ bz*2]]/2" $ slow 2 $ run 5)
    |+| begin "0.7" |+| end "0.85"
@@ -185,6 +205,7 @@ d6 $ sound (samples "[[ff bz]*2 [~ bz*2]]/2" $ slow 2 $ run 5)
    |+| shape ((/5) <$> slow (5%3) sinewave1)
    |+| delay "0.6" |+| delayfeedback "0.5" |+| delaytime "0.766" --(138/60)/3
 
+d1 $ sound "[k [sn ~ ~ wt] [~ k] sn]/4"
 d1 $ sound "[k [sn ~ ~ k] [~ k] sn]/4"
 
 d2 $ sound "{wt/2, [~ wtsn]/8}"
@@ -194,13 +215,16 @@ d2 $ whenmod 5 3 (rev . chop 8) $ density (4%3) $ sound "[wtsn ~ wt]"
 
 d6 silence
 d4 silence
-d1 $ sound "[k [sn ~ ~ k] [~ k*2] sn]/4"
-
 d2 $ within (0.5, 1) (slow (3%2) . chop 4) $ whenmod 5 3 (rev . chop 8) $ density (4%3) $ sound "[wtsn ~ wt]"
+
+d1 $ sound "[k [sn ~ ~ k] [~ k*2] sn]/4"
 
 d5 $ whenmod 5 2 (|+| vowel "i o") $ whenmod 3 1 (slow 2) $ brak $ slow 16 $ jux (0.5 <~) $ rev . striate 256 $ sound "fly"
    |+| hcutoff "0.09"
    |+| hresonance "0.06"
+
+d3 $ every 2 (0.5 <~) $ slow 4 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
+   |+| vowel "o i"
 
 d3 silence
 d5 silence
