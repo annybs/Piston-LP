@@ -16,6 +16,7 @@ d5 $ slow 16 $ jux (0.5 <~) $ rev . striate 256 $ sound "fly"
    |+| gain "1"
 -- |+| gain "0.1"
 
+d1 $ sound "k:1"
 d2 $ sound "wt/2"
 
 d3 $ slow 8 $ (<~) (1/4) $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
@@ -51,9 +52,9 @@ d5 silence
 
 d1 $ within (0.5, 1) (chop 8) $ sound "{k(3,8), [~ ~ sn [~ sn*3]/2]}/2"
 
-d3 $ (every 2 $ within (0.25, 0.75) (0.5 ~>)) $ slow 8 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
+d3 $ (|+| begin "0.8").(|+| end "0.85") $ slow 8 $ (<~) (1/4) $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
 
-d1 $ every 3 (density (5%4)) $ within (0.5, 1) (chop 8) $ sound "{k(3,8), [~ ~ sn [~ sn*3]/2]}/2"
+d1 $ within (0.5, 1) (chop 8) $ sound "{[[k*2 ~] ~], [~ ~ sn [~ sn*3]/2]}/2"
 
 mapM_ ($ silence) [d1,d2]
 
@@ -63,7 +64,7 @@ d2 $ sound "[~ wt*4 ~ wt*2 ~]/5"
 piston ii
 -}
 
-mapM_ ($ silence) [d3,d4]
+d4 silence
 
 d2 $ sound "wt*2"
 |+| vowel "[u e u a]/2"
@@ -109,6 +110,8 @@ d7 $ rev $ chop 16 $ sound "[ice [~ ice] ~ ~]/4"
    |+| gain "0.7"
    |+| shape ((+0.25).(/2) <$> density 8 saw1)
 
+d2 $ sound "~ wt*2"
+
 d7 $ every 2 (density 1.5) $ whenmod 5 3 (density 2) $ rev $ chop 16 $ sound "[ice [~ ice] ~ ~]/4"
    |+| gain "0.7"
    |+| shape ((+0.25).(/2) <$> density 8 saw1)
@@ -117,23 +120,17 @@ d7 $ every 2 (density 1.5) $ whenmod 5 3 (density 2) $ rev $ chop 16 $ sound "[i
 piston iii
 -}
 
-d2 $ sound "~ wt*2"
-
 mapM_ ($ silence) [d1,d3,d4,d9]
 
 d1 $ sound "k"
 
-d3 $ (0.5 <~) $ chop 32 $ bassParams $ sound "dubb [dubb:1 ~]/4"
-   |+| cut "1"
-   |+| speed "0.6"
-   |+| shape ((+0.25).(/2) <$> slow 4 saw1)
-
-d1 silence
-d1 $ sound "{k*2 [~ k], ~ sn}/2"
-
 d6 $ sound "[ff(3,8) [~ [ff bz]]]/4"
    |+| end "0.3"
    |+| shape "0 0.25"
+   |+| gain "0.7"
+
+d1 silence
+d1 $ sound "{k*2 [~ k], ~ sn}/2"
 
 d3 $ every 2 (0.5 <~) $ slow 4 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| cut "1"
@@ -143,63 +140,68 @@ d3 $ every 2 (0.5 <~) $ slow 4 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:
    |+| cut "1"
    |+| vowel "o i"
 
-d7 silence
-
 d3 $ every 2 (0.5 <~) $ slow 4 . brak $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| cut "1"
    |+| vowel "o i"
 
-d1 $ sound "{k [~ k], ~ sn}/2"
+mapM_ ($ silence) [d1,d2,d7]
 
-d2 silence
-d4 silence
+d2 $ sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8"
 
-{-fill-}
+let kdelay = (|+| delay "0.3").(|+| delayfeedback "0.5").(|+| delaytime "0.766") --(138/60)/3
+d2 $ within (0.5, 1.5) (kdelay) $ sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8"
+
+d8 $ slow 8 $ chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
+   |+| cut "1"
+   |+| speed "0.2"
+   |+| vowel "e"
+
+d1 $ (0.5 <~) $ every 4 (density 2) $ sound "[k*2 ~]/2"
+
+d1 $ stack [
+   (0.5 <~) $ every 4 (density 2) $ sound "[k*2 ~]/2",
+   sound "[~ sn]/2"
+]
+
+d2 $ chop 16 $ within (0.5, 1.5) (kdelay) $ sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8"
+
+d3 silence
+
+d2 $ whenmod 3 2 rev $ chop 16 $ within (0.5, 1.5) (kdelay) $ sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8"
+
+d2 $ within (0, 0.5) (|+| vowel "o") $ whenmod 3 2 rev $ chop 16 $ within (0.5, 1.5) (kdelay) $ sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8"
+
+d1 $ sound "{k*2 [~ k], ~ sn}/2"
+
+d3 $ every 2 (0.5 <~) $ slow 4 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
+   |+| cut "1"
+   |+| vowel "o i"
+
+mapM_ ($ silence) [d2,d3,d6,d8]
 
 {-
 piston iv
 -}
 
-d1 $ sound "[k*2 [sn k] k*2 sn [~ k]]/5"
+d1 $ sound "{[~ ~ ~ k:1], [~ sn]/2}"
 
-d4 $ within (0.5, 1) (jux (slow 1.2)) $ slow 4 $ chop 128 $ sound "fly:1"
-   |+| gain "0.6"
-   |+| shape ((/2) <$> density 1.3 sinewave1)
+d4 $ whenmod 5 3 rev $ slow 16 $ jux rev $ chop 64 $ bassParams $ sound "fly:1"
+   |+| speed "0.7"
+   |+| shape ((/2) <$> density 2.1 saw1)
 
-d3 silence
+d1 $ sound "{[k ~ ~ k:1], [~ sn]/2}"
 
-d1 $ sound "[[k [~ k] k [~ k]] sn]/8"
+d4 $ whenmod 5 3 rev $ slow 16 $ jux rev $ chop 64 $ bassParams $ sound "{fly:1, ant*2}"
+   |+| speed "0.7"
+   |+| shape ((/2) <$> density 2.1 saw1)
 
-d4 silence
-
-let kdelay = (|+| delay "0.3").(|+| delayfeedback "0.5").(|+| delaytime "0.766") --(138/60)/3
-d1 $ within (0.5, 1.5) (kdelay) $ sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8"
-
-d1 $ stack [
-   within (0.5, 1.5) (kdelay) $ sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8",
-   (0.5 <~) $ every 4 (density 2) $ sound "k"
-]
-
-d3 $ slow 8 $ chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
-   |+| cut "1"
-   |+| speed "0.2"
-   |+| vowel "e"
-
-d2 $ sound "wt*2"
-|+| vowel "o i"
-
-
-
-{- ?? -}
-
-
-d6 silence
-d1 $ whenmod 3 2 (slow (4%3)) $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
-solo $ d1 $ whenmod 3 2 (slow (4%3)) $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
+hush
 
 {-
 piston vi
 -}
+
+solo $ d1 $ whenmod 3 2 (slow (4%3)) $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
 
 solo $ d1 $ every 3 (density 2) $ within (0, 0.5) (jux ((1%3) ~>)) $ sound "[k [sn ~ k] [~ ~ sn] ~]/8"
 
