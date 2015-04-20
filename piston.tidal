@@ -35,10 +35,11 @@ d1 $ sound "[k(3,8)]/2"
 d1 $ sound "{k(3,8), [~ sn]}/2"
 d1 $ sound "{k(3,8), [~ ~ sn [~ sn*3]/2]}/2"
 
+d1 $ within (0.5, 1) (chop 8) $ sound "{k(3,8), [~ ~ sn [~ sn*3]/2]}/2"
+
 d5 silence
 d3 silence
 
-d1 $ within (0.5, 1) (chop 8) $ sound "{k(3,8), [~ ~ sn [~ sn*3]/2]}/2"
 d1 $ every 3 (density (5%4)) $ within (0.5, 1) (chop 8) $ sound "{k(3,8), [~ ~ sn [~ sn*3]/2]}/2"
 d1 silence
 
@@ -47,13 +48,17 @@ yeh
 -}
 
 d2 $ whenmod 5 3 (rev . chop 8) $ density (4%3) $ sound "[wtsn ~ wt]"
+d2 $ whenmod 5 3 rev $ density (4%3) $ sound "[wtsn ~ wt]"
+d2 $ sound "[wt wtsn]/8"
 
 d3 $ (every 2 $ within (0.25, 0.75) (0.5 ~>)) $ slow 8 $ rev . chop 16 $ sound "[dubb dubb:1]/2"
    |+| gain "0.7"
    |+| hcutoff "0.022" |+| hresonance "0.001"
 
-d1 $ sound "[k [sn ~ ~ k] [~ k] sn]/4"
-d1 $ sound "[k [sn ~ ~ k] [~ k*2] sn]/4"
+d1 $ sound "[k [sn ~ ~ wt] k*2 sn]/4"
+d1 $ sound "[k*2 [sn ~ ~ wt] k*2 sn]/4"
+
+d2 silence
 
 d3 $ slow 16 $ rev . chop 32 $ sound "[dubb dubb:1]/2"
    |+| gain "0.7"
@@ -61,11 +66,8 @@ d3 $ slow 16 $ rev . chop 32 $ sound "[dubb dubb:1]/2"
 
 {-need more-}
 
-d1 $ sound "[k [sn ~ ~ k] [~ k*2] sn [~ k]]/5"
-
-d2 silence
-
-d1 $ whenmod 3 2 (slow (4%3)) $ sound "[k [sn ~ ~ k] [~ k*2] sn [~ k]]/5"
+d1 $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
+d1 $ whenmod 3 2 (slow (4%3)) $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
 
 d3 silence
 
@@ -81,6 +83,10 @@ d1 silence
 d1 $ sound "[k [sn ~ k] [~ ~ sn] ~]/8"
 
 d3 $ slow 8 $ slowspread ($) [rev.chop 12, rev.chop 24] $ sound "[dubb dubb:1]/2"
+   |+| gain "0.7"
+   |+| hcutoff "0.022" |+| hresonance "0.001"
+
+d3 $ (|+| begin ((/2) <$> (density (5%4) $ sinewave1))) $ (|+| end ((+0.5).(/2) <$> (density (5%4) $ sinewave1))) $ slow 8 $ slowspread ($) [rev.chop 12, rev.chop 24] $ sound "[dubb dubb:1]/2"
    |+| gain "0.7"
    |+| hcutoff "0.022" |+| hresonance "0.001"
 
@@ -102,13 +108,14 @@ d1 $ sound "[k [sn ~ ~ sn] [~ k] sn [~ k]]/5"
 trip
 -}
 
-d1 $ sound "[k [sn ~ ~ ~ sn] [~ k] sn]/4"
+d1 $ sound "[k [sn ~ ~ sn] [~ k] sn]/4"
 
 d3 $ slow 16 $ rev . chop 64 $ sound "[dubb dubb:1]/2"
    |+| gain "0.7"
    |+| hcutoff "0.022" |+| hresonance "0.001"
 
-d1 $ sound "[k [sn ~ ~ ~ sn] [k k] sn]/4"
+d1 $ sound "[k [sn ~ ~ k] [~ k] sn]/4"
+d1 $ sound "[k [sn ~ ~ k] [~ k*2] sn]/4"
 
 d6 $ sound (samples "[[ff bz]*2 [~ bz*2]]/2" $ slow 2 $ run 5)
    |+| begin "0.7" |+| end "0.85"
