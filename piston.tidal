@@ -167,7 +167,8 @@ d4 $ chop 64 $ sound "[fly ~ [fly ~ ~ fly] ~]/4"
 
 mapM_ ($ silence) [d1,d3,d7,d8]
 
-d1 $ (0.5 <~) $ sound "[[k ~ wtsn k] ~]/2"
+--d1 $ (0.5 <~) $ sound "[[k ~ wtsn k] ~]/2"
+d1 $ (0.5 <~) $ sound "[k [sn k]]/2"
 
 d3 $ slow 8 $ ((1%8) <~) $ chop 32 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| speed "1.2"
