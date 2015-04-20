@@ -10,7 +10,8 @@ is primitive as heck
 
 ## Versions
 
-- 24 March 2015 (This version)
+- 25 March 2015 (This version)
+- 24 March 2015 (d0687cde1f298ba539a49794eeac01516ed432a7)
 - 23 March 2015 (36997bc979d017c8ff685be81b0e764e4ade3777)
 - 22 March 2015 (7efe45cf315444a9adf2dc020fae8f50c8b8714d)
 - 21 March 2015 (a3f423ba41ae1a897c5105288a80db4011c94f49)
