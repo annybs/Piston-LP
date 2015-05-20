@@ -201,18 +201,20 @@ d1 $ (0.5 <~) $ stack [
    (0.75 ~>) $ sound "[~ sn]/2"
 ]
 
-d4 $ whenmod 7 5 rev $ rev . chop 16 $ sound "[bz(3,8)]/2"
-   |+| gain "0.7"
-   |+| speed ((+2) <$> density 2.8 sinewave1)
+d2 silence
 
 d3 $ bassParams $ (0.5 ~>) $ chop 8 $ sound "[dubb dubb:1]/2"
    |+| cut "1"
    |+| cutoff "0.01"
    |+| resonance ((/3) <$> slow 4 saw1)
 
-mapM_ ($ silence) [d2,d3,d4,d8]
+d4 $ whenmod 7 5 rev $ rev . chop 16 $ sound "[bz(3,8)]/2"
+   |+| gain "0.7"
+   |+| speed ((+2) <$> density 2.8 sinewave1)
 
 d2 $ sound "[wt(5,8)]/4"
+
+mapM_ ($ silence) [d3,d4,d8]
 
 d9 $ (0.25 ~>) $ sound "[~ ~ ~ [~ ~ [~ ~ ~ wtsn] [~ wtsn ~ wtsn]]]/16"
 
@@ -249,6 +251,11 @@ d4 $ whenmod 7 5 rev $ rev . chop 16 $ sound "[bz(3,8)]/2"
 d4 $ whenmod 6 2 (density (4%3)) $ whenmod 7 5 rev $ rev . chop 16 $ sound "[bz(3,8)]/2"
    |+| gain "0.7"
    |+| speed ((+3) <$> density 2.8 sinewave1)
+
+d1 $ (0.5 <~) $ stack [
+   whenmod 8 7 (density 1.5) $ whenmod 9 2 ((0.25 <~)) $ sound "~ k",
+   whenmod 10 5 (superimpose (0.25 ~>)) $ (0.75 ~>) $ sound "[~ sn]/2"
+]
 
 d4 $ whenmod 6 2 (density (4%3)) $ whenmod 7 5 rev $ rev . chop 16 $ sound "[bz(3,8)]/2"
    |+| gain "0.7"
@@ -304,7 +311,7 @@ d6 $ whenmod 4 3 (density 1.8) $ chop 12 $ sound "[~ ~ [~ k:1] !]/4"
    |+| speed "0.9"
    |+| shape ((/3) <$> density 3 sinewave1)
 
-d7 $ rev $ stack [
+d7 $ whenmod 5 3 (slow 1.5) $ rev $ stack [
    smash 64 [0.5,1] $ gprop $ sound "~ gnome"
    |+| pan (slow 4 sinewave1),
    smash 64 [(1/2.5),1] $ gprop $ sound "~ gnome"
@@ -316,13 +323,6 @@ d3 $ within (0.5, 0.75) (|+| vowel "u o") $ every 2 (density 2) $ whenmod 3 2 (d
    |+| speed ((+0.75).(/2) <$> slow 1.3 sinewave1)
 
 mapM_ ($ silence) [d1,d3]
-
-d7 $ whenmod 5 3 (slow 1.5) $ rev $ stack [
-   smash 64 [0.5,1] $ gprop $ sound "~ gnome"
-   |+| pan (slow 4 sinewave1),
-   smash 64 [(1/2.5),1] $ gprop $ sound "~ gnome"
-   |+| pan ((0.5 <~) $ slow 4 sinewave1)
-]
 
 d1 $ sound "k:1"
 
@@ -367,24 +367,20 @@ d1 $ stack [
 
 d2 $ sound "[~ [~ ~ ~ wt] wt*2 wt]/8"
 
-d4 $ slow 16 $ rev . chop 64 $ bassParams $ sound "[dubb dubb:1]/2"
+d4 $ whenmod 4 2 rev $ slow 16 $ rev . chop 64 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| shape ((/3) <$> slow 4 saw1)
-
-
+   |+| vowel "[e a]"
 
 d1 $ stack [
-   slow 2 $ sound "[k*4 [~ k ~ k] [~ k k ~] [~ ~ k ~]]/4",
+   slow 2 $ sound "[k*4 [~ k ~ k] [~ k k ~] [~ k]]/4",
    whenmod 8 4 (0.5 ~>) $ sound "[~ sn]/4"
 ]
 
-d1 $ stack [
-   within (0.5, 1) (rev . density (5%3)) $ slow 2 $ sound "[k*2 [~ k ~ k] [~ k k ~] [~ ~ k ~]]/4",
-   whenmod 8 4 (0.5 ~>) $ sound "[~ sn]/4"
-]
+d2 $ slowspread ($) [chop 16, chop 32] $ sound "[wtsn(3,8)]/2"
+   |+| speed ((+0.6).(/2) <$> density 1.8 sinewave1)
 
-hush
-
---tbc
+d2 $ within (0.25, 0.75) rev $ slowspread ($) [chop 16, chop 32] $ sound "[wtsn(3,8)]/2"
+   |+| speed ((+0.6).(/2) <$> density 1.8 sinewave1)
 
 {-
 piston 3.a
