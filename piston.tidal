@@ -190,18 +190,13 @@ piston 2.a
 -}
 
 solo $ d8 $ slow 8 $ chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
-   |+| cut "1"
    |+| speed "0.2"
    |+| vowel "e"
-
-d2 $ within (0.5, 1.5) (kdelay) $ sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8"
 
 d1 $ (0.5 <~) $ stack [
    whenmod 9 2 (0.25 <~) $ sound "~ k",
    (0.75 ~>) $ sound "[~ sn]/2"
 ]
-
-d2 silence
 
 d3 $ bassParams $ (0.5 ~>) $ chop 8 $ sound "[dubb dubb:1]/2"
    |+| cut "1"
@@ -234,22 +229,21 @@ d3 $ whenmod 5 3 (superimpose (0.25 ~>)) $ bassParams $ (0.5 ~>) $ chop 8 $ soun
    |+| resonance ((/3) <$> slow 4 saw1)
    |+| shape ((+0.25).(/2) <$> density 1.5 saw1)
 
+d9 silence
+
 d1 $ (0.5 <~) $ stack [
    whenmod 9 2 ((0.25 <~)) $ sound "~ k",
    whenmod 10 5 (superimpose (0.25 ~>)) $ (0.75 ~>) $ sound "[~ sn]/2"
 ]
 
 d8 $ slow 8 $ chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
-   |+| cut "1"
    |+| speed "0.2"
    |+| vowel "e"
 
 d4 $ whenmod 7 5 rev $ rev . chop 16 $ sound "[bz(3,8)]/2"
-   |+| gain "0.7"
    |+| speed ((+3) <$> density 2.8 sinewave1)
 
 d4 $ whenmod 6 2 (density (4%3)) $ whenmod 7 5 rev $ rev . chop 16 $ sound "[bz(3,8)]/2"
-   |+| gain "0.7"
    |+| speed ((+3) <$> density 2.8 sinewave1)
 
 d1 $ (0.5 <~) $ stack [
@@ -258,10 +252,11 @@ d1 $ (0.5 <~) $ stack [
 ]
 
 d4 $ whenmod 6 2 (density (4%3)) $ whenmod 7 5 rev $ rev . chop 16 $ sound "[bz(3,8)]/2"
-   |+| gain "0.7"
    |+| speed ((+3) <$> density 2.8 sinewave1)
    |+| delay "0.3" |+| delayfeedback "0.5" |+| delaytime "1.7249" --(138/60)/4*3
    |+| pan (density 3.7 sinewave1)
+
+d7 silence
 
 {-
 piston 2.b
@@ -361,7 +356,7 @@ piston 2.c
 -}
 
 d1 $ stack [
-   sound "[k*4 ~ ~ ~]/8",
+   sound "[[k k:1]*2 ~ ~ ~]/8",
    whenmod 8 4 (0.5 ~>) $ sound "[~ sn]/4"
 ]
 
@@ -372,7 +367,7 @@ d4 $ whenmod 4 2 rev $ slow 16 $ rev . chop 64 $ bassParams $ sound "[dubb dubb:
    |+| vowel "[e a]"
 
 d1 $ stack [
-   slow 2 $ sound "[k*4 [~ k ~ k] [~ k k ~] [~ k]]/4",
+   slow 2 $ sound "[[k k:1]*2 [~ k:1 ~ k] [~ k:1 k ~] [~ ~ ~ k]]/4",
    whenmod 8 4 (0.5 ~>) $ sound "[~ sn]/4"
 ]
 
@@ -382,9 +377,15 @@ d2 $ slowspread ($) [chop 16, chop 32] $ sound "[wtsn(3,8)]/2"
 d2 $ within (0.25, 0.75) rev $ slowspread ($) [chop 16, chop 32] $ sound "[wtsn(3,8)]/2"
    |+| speed ((+0.6).(/2) <$> density 1.8 sinewave1)
 
+d1 $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
+
+mapM_ ($ silence) [d3,d4]
+
 {-
 piston 3.a
 -}
+
+d1 $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
 
 --tbc
 
