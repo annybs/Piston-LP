@@ -227,14 +227,20 @@ d3 $ whenmod 5 3 (superimpose (0.25 ~>)) $ bassParams $ (0.25 ~>) $ chop 8 $ sou
    |+| cutoff "0.01"
    |+| resonance ((/3) <$> slow 4 saw1)
 
-d1 $ whenmod 9 2 (0.25 ~>) $ (0.5 <~) $ sound "k"
-d1 $ whenmod 9 2 (0.25 ~>) $ (0.5 <~) $ sound "{k, ~ sn}"
+d3 $ whenmod 5 3 (superimpose (0.25 ~>)) $ bassParams $ (0.5 ~>) $ chop 8 $ sound "[dubb dubb:1]/2"
+   |+| cut "1"
+   |+| cutoff "0.01"
+   |+| resonance ((/3) <$> slow 4 saw1)
+   |+| shape ((+0.25).(/2) <$> density 1.5 saw1)
+
+d1 $ (0.5 <~) $ sound "{k, ~ sn}"
 
 d3 $ whenmod 5 3 (superimpose (0.25 ~>)) $ bassParams $ (0.5 ~>) $ chop 8 $ sound "[dubb dubb:1]/2"
    |+| cut "1"
    |+| cutoff "0.01"
    |+| resonance ((/3) <$> slow 4 saw1)
    |+| shape ((+0.25).(/2) <$> density 1.5 saw1)
+   |+| delay "0.7" |+| delayfeedback "0.3" |+| delaytime "0.2875" --(138/60)/8
 
 mapM_ ($ silence) [d1,d2,d4,d9]
 
@@ -251,19 +257,29 @@ d2 $ sound "[[~ [wt wtsn]] ~ wt ~]/5"
 d2 silence
 d1 $ sound "[k sn [~ k] sn [k sn] ~]/6"
 
+d1 $ sound "[k*2 sn k*2 sn [k sn] k]/6"
+
 d2 $ smash 4 [0.5,0.25] $ iter 3 $ sound "[[~ [wt wtsn]] ~ wt ~]/5"
 
-d7 silence
+d7 $ within (0.5, 0.75) (iter 8) $ whenmod 3 2 (slow 2) $ slow 8 $ every 2 rev $ striate 64 $ sound "ice"
+   |+| cutoff "0.02"
+   |+| resonance "0.001"
+   |+| speed "0.7"
 
-d1 $ (whenmod 7 3 (within (0.5,1) (superimpose ((3%4) ~>)))) $ sound "[k sn [~ k] sn [k sn] ~]/6"
+{- hm
+d3 $ bassParams $ slow 6 . chop 32 $ sound "[dubb dubb:1]/2"
+   |+| vowel "e u"
+-}
+
+d1 $ (whenmod 7 3 (within (0.5,1.5) (superimpose ((3%4) ~>)))) $ sound "[k*2 sn k*2 sn [k sn] k]/6"
+
+d7 silence
 
 {-
 piston 2.b original, maybe push back to 2.c
 -}
 
-d1 $ sound "{[~ ~ ~ k:1], [~ sn]/2}"
-
-d3 silence
+solo $ d1 $ sound "{[~ ~ ~ k:1], [~ sn]/2}"
 
 d2 $ sound "~ wt wt wtsn/8"
    |+| shape ((/2) <$> density 1.2 saw1)
