@@ -389,6 +389,9 @@ d1 $ sound "{k, [~ ~ ~ k:1] [~ k:1]}"
 
 d3 $ within (0, 0.5) (slow (7%6)) $ every 2 (0.5 <~) $ slow 8 $ rev . chop 32 $ bassParams $ sound "[dubb dubb:1]/2"
 
+d2 $ sound "wt*2"
+|+| vowel "[u e u a]/2"
+
 {-
 piston 3.b
 -}
@@ -487,13 +490,13 @@ d7 $ every 2 (density 2) $ whenmod 3 2 (density 1.6) $ chop 16 $ bassParams $ so
    |+| cut "1"
    |+| speed ((+0.75).(/2) <$> slow 1.3 sinewave1)
 
-d2 $ sound "{wt/2, [~ wtsn]/8}"
-
 d9 $ stack [
    slow 2 $ smash 16 [1,2] $ sound "ant:1"
    |+| cutoff "0.08" |+| resonance "0.01",
    smash 4 [0.5,0.25] $ iter 3 $ sound "[[~ [wt wtsn]] ~ wt ~]/5"
 ]
+
+d2 $ sound "{wt/2, [~ wtsn]/8}"
 
 d2 $ density (4%3) $ sound "[wtsn ~ wt]"
 d2 $ whenmod 5 3 rev $ density (4%3) $ sound "[wtsn ~ wt]"
