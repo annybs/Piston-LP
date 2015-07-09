@@ -385,15 +385,15 @@ d2 $ jux (3 ~>) $ within (0.25, 0.75) rev $ slowspread ($) [chop 16, chop 32] $ 
 piston 3.a
 -}
 
-d1 $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
+d1 $ sound "{k, [~ ~ ~ k:1] [~ k:1]}"
 
---tbc
-
-solo $ d1 $ whenmod 3 2 (slow (4%3)) $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
+d3 $ within (0, 0.5) (slow (7%6)) $ every 2 (0.5 <~) $ slow 8 $ rev . chop 32 $ bassParams $ sound "[dubb dubb:1]/2"
 
 {-
 piston 3.b
 -}
+
+solo $ d1 $ whenmod 3 2 (slow (4%3)) $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
 
 d1 $ every 3 (density 2) $ within (0, 0.5) (jux ((1%3) ~>)) $ sound "[k [sn ~ k] [~ ~ sn] ~]/8"
 
