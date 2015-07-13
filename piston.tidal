@@ -196,13 +196,13 @@ solo $ d8 $ slow 8 $ chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
 
 d2 $ sound "[[~ [wt wtsn]] ~ wt ~]/5"
 
-d9 $ sound "[~ ~ ~ [~ ~ [~ wtsn] wtsn*2]]/16"
-
 d1 $ sound "[k sn [~ k] sn [k sn] ~]/6"
 
 d1 $ sound "[k*2 sn [~ k] sn [k sn] k]/6"
 
 d2 $ smash 4 [0.5,0.25] $ iter 3 $ sound "[[~ [wt wtsn]] ~ wt ~]/5"
+
+d9 $ sound "[~ ~ ~ [~ ~ [~ wtsn] wtsn*2]]/16"
 
 d1 $ sound "[k*2 [sn ~ ~ sn] [~ k] sn [k sn] k]/6"
    |+| gain "[1 [1 0.8] 1 1 1 1]/6"
@@ -240,7 +240,7 @@ d3 $ whenmod 5 3 (superimpose (0.25 ~>)) $ bassParams $ (0.5 ~>) $ chop 8 $ soun
    |+| resonance ((/3) <$> slow 4 saw1)
    |+| shape ((+0.25).(/2) <$> density 1.5 saw1)
 
-mapM_ ($ silence) [d1,d8,d9]
+mapM_ ($ silence) [d1,d3,d8,d9]
 
 d1 $ stack [
    sound "k",
@@ -248,18 +248,24 @@ d1 $ stack [
    |+| gain "[0 [1 0.8]]/2"
 ]
 
+d3 $ whenmod 5 3 (superimpose (0.25 ~>)) $ bassParams $ (0.5 ~>) $ chop 8 $ sound "[dubb dubb:1]/2"
+   |+| cut "1"
+   |+| cutoff "0.01"
+   |+| resonance ((/3) <$> slow 4 saw1)
+   |+| shape ((+0.25).(/2) <$> density 1.5 saw1)
+
 d7 $ within (0.5, 0.75) (iter 8) $ whenmod 3 2 (slow 2) $ slow 8 $ every 2 rev $ striate 64 $ sound "ice"
    |+| cutoff "0.02"
    |+| resonance "0.001"
    |+| speed "0.7"
 
 d4 $ (0.5 <~) $ slow 16 . chop 32 $ sound (samples "bzl" (density 1.5 "0 1"))
-   |+| speed ((+2) <$> density 2.2 sinewave1)
+   |+| speed ((+1.8) <$> density 2.2 sinewave1)
    |+| gain "0.9"
    |+| delay "0.7" |+| delayfeedback "0.3" |+| delaytime "0.2875" --(138/60)/8
    |+| pan (density 4.1 sinewave1)
 
-mapM_ ($ silence) [d1,d2,d3,d4,d9]
+mapM_ ($ silence) [d1,d2,d3,d4]
 
 d1 $ sound "[k*2 [sn ~ ~ sn] [~ k] sn]/4"
    |+| gain "[1 [1 0.8] 1 1]/4"
