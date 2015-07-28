@@ -389,6 +389,12 @@ d6 $ within (0, 0.5) (slow (7%6)) $ every 2 (0.5 <~) $ slow 8 $ rev . chop 32 $ 
 d5 $ superimpose (slow (5%3) . iter 2) $ (|+| speed ((+0.7) <$> slow 1.1 sinewave1)) $ chop 32 $ sound "[plode(5,8)]/8"
    |+| cut "1"
 
+d7 $ sound "cymb/8"
+
+d7 $ sound "[cymb*8 ~]/8"
+   |+| gain ((+0.7).(/3) <$> density 3.6 saw1)
+   |+| cut "1"
+
 d2 $ sound "wt*2"
 |+| vowel "[u e u a]/2"
 
@@ -397,7 +403,11 @@ d1 $ sound "{k, [~ ~ ~ k:1] [~ k:1]}"
 
 d4 $ slow 16 $ rev . chop 64 $ bassParams $ sound "[dubb dubb:1]/2"
 
-d8 $ jux (3 ~>) $ within (0.25, 0.75) rev $ slowspread ($) [chop 16, chop 32] $ sound "[wtsn(3,8)]/2"
+d7 $ density (5%4) $ whenmod 9 4 (density 1.5) $ sound "[cymb*8 cymb*3]/8"
+   |+| gain ((+0.7).(/3) <$> density 3.6 saw1)
+   |+| cut "1"
+
+d8 $ (3 ~>) $ within (0.25, 0.75) rev $ slowspread ($) [chop 16, chop 32] $ sound "[wtsn(3,8)]/2"
    |+| speed ((+0.8).(/2) <$> density 1.8 sinewave1)
 
 {-
@@ -514,6 +524,14 @@ d7 $ every 2 (density 2) $ whenmod 3 2 (density 1.6) $ chop 16 $ bassParams $ so
 
 d2 $ sound "{wt/2, [~ wtsn]/8}"
 
+d9 $ stack [
+   slow 2 $ smash 16 [1,2] $ sound "ant:1"
+   |+| cutoff "0.08" |+| resonance "0.01",
+   density (5%4) $ whenmod 9 4 (density 1.5) $ sound "[cymb*8 cymb*3]/8"
+   |+| gain ((+0.7).(/3) <$> density 3.6 saw1)
+   |+| cut "1"
+]
+
 d2 $ density (4%3) $ sound "[wtsn ~ wt]"
 d2 $ whenmod 5 3 rev $ density (4%3) $ sound "[wtsn ~ wt]"
 d2 $ whenmod 5 3 (rev . chop 8) $ density (4%3) $ sound "[wtsn ~ wt]"
@@ -540,11 +558,18 @@ d7 $ whenmod 6 3 (density (5%4)) $ within (0.5, 0.75) (iter 4) $ whenmod 3 2 (sl
    |+| speed "0.7"
    |+| gain "0.7"
 
-d8 $ whenmod 5 3 rev $ brak $ slow 16 $ jux ((1.5 ~>).rev) $ chop 64 $ bassParams $ sound "fly:1"
+d4 $ whenmod 5 3 rev $ brak $ slow 16 $ jux ((1.5 ~>).rev) $ chop 64 $ bassParams $ sound "fly:1"
    |+| speed "0.7"
    |+| shape ((/2) <$> density 2.1 saw1)
 
+d6 $ within (0, 0.5) (slow (7%6)) $ every 2 (0.5 <~) $ slow 8 $ rev . chop 32 $ bassParams $ sound "[dubb dubb:1]/2"
+
+d8 $ (3 ~>) $ within (0.25, 0.75) rev $ slowspread ($) [chop 16, chop 32] $ sound "[wtsn(3,8)]/2"
+   |+| speed ((+0.8).(/2) <$> density 1.8 sinewave1)
+
 mapM_ ($ silence) [d5,d7,d9]
+
+mapM_ ($ silence) [d4,d6,d8]
 
 solo $ d2 $ within (0.5, 1) (slow (3%2) . chop 4) $ whenmod 5 3 (rev . chop 8) $ density (4%3) $ sound "[wtsn ~ wt]"
 
