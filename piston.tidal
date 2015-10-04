@@ -145,20 +145,20 @@ d3 $ every 2 (0.5 <~) $ slow 4 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:
    |+| cut "1"
    |+| vowel "i"
 
-d3 $ every 2 (0.5 <~) $ slow 4 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
+d3 $ (4 <~) $ every 2 (0.5 <~) $ slow 4 $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| cut "1"
    |+| vowel "o i"
 
-d3 $ every 2 (0.5 <~) $ slow 4 . brak $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
+d3 $ (4 <~) $ every 2 (0.5 <~) $ slow 4 . brak $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| cut "1"
    |+| vowel "o i"
 
-d3 $ every 2 (0.5 <~) $ slow 4 . brak $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
+d3 $ (4 <~) $ every 2 (0.5 <~) $ slow 4 . brak $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| vowel "o i"
 
 mapM_ ($ silence) [d1,d2,d7]
 
-d3 $ every 2 (0.5 <~) $ slow 4 . brak $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
+d3 $ (4 <~) $ every 2 (0.5 <~) $ slow 4 . brak $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| cut "1"
    |+| vowel "o i"
 
@@ -184,7 +184,7 @@ d2 $ whenmod 3 2 rev $ chop 16 $ within (0.5, 1.5) (kdelay) $ sound "[[k:1 [~ k:
 
 d2 $ within (0, 0.5) (|+| vowel "o") $ whenmod 3 2 rev $ chop 16 $ within (0.5, 1.5) (kdelay) $ sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8"
 
-d3 $ every 2 (0.5 <~) $ slow 4 . brak $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
+d3 $ (4 <~) $ every 2 (0.5 <~) $ slow 4 . brak $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
    |+| vowel "o i"
 
 d3 silence
@@ -532,6 +532,8 @@ d8 $ chop 64 $ sound "[fly ~ [fly ~ ~ fly] ~]/4"
    |+| end "0.35"
    |+| shape ((+0.25).(/2) <$> density 8 sinewave1)
    |+| speed ((+1) <$> density (5%4) saw1)
+
+--d10 $ sound "dubb/4"
 
 d7 $ every 2 (density 2) $ whenmod 3 2 (density 1.6) $ chop 16 $ bassParams $ sound (samples "[~ dubb]" (slow 4 "0 1"))
    |+| cut "1"
