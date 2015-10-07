@@ -391,7 +391,7 @@ chdrum $ sound "{k, [~ ~ ~ k:1] [~ k:1], [~ sn ~ sn*2]/8}"
 
 chbass $ (0.6 ~>) $ p4bass
 
-msil [d2,d4,d8]
+msil [d2,d4,d8,chextra]
 
 d4 $ iter 4 $ density (9%8) $ within (0, 0.5) rev $ smash 8 [1,2] $ sound "[gnome(3,8)]/2"
    |+| gain "0.8"
