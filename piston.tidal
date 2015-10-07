@@ -156,7 +156,6 @@ d6 $ sound "[ff(3,8) [~ [ff bz]]]/4"
    |+| gain "0.7"
 
 chdrum silence
-
 chdrum $ sound "[k k sn k]/2"
 
 let p3bass v c b = (4 <~) $ every 2 (0.5 <~) $ slow 4 . (if b then brak else id) $ rev . chop 16 $ bassParams $ sound "[dubb dubb:1]/2"
@@ -170,9 +169,7 @@ chbass $ p3bass "o i" "1" False
 chdrum $ p3drum
 chbass $ p3bass "o i" "1" True
 chbass $ p3bass "o i" "0" True
-
 msil [d1,d2,d7]
-
 chbass $ p3bass "o i" "1" True
 
 let p2d2 = sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8"
@@ -290,8 +287,6 @@ let p5fly b = whenmod 5 3 rev $ (if b then brak else id) $ slow 16 $ jux ((1.5 ~
             |+| speed "0.7"
             |+| shape ((/2) <$> density 2.1 saw1)
 
-d5 $ whenmod 5 3 rev $ brak $ slow 16 $ jux ((1.5 ~>).rev) $ chop 64 $ bassParams $ sound "fly:1"
-
 d5 $ p5fly False
 chbass $ whenmod 3 2 (density 1.6) $ p5bass
 d5 silence
@@ -376,8 +371,8 @@ let p6cymb g = within (0.5,1) (|+| vowel "e") $ (0.5 ~>) $ chop 2 $ sound "[cymb
                |+| shape ((/3) <$> density 3.6 saw1)
                |+| gain g
 
-d7 $ p6cymb "0.5"
-d7 $ p6cymb "0.8" -- "0.5" to "0.8"
+chextra $ p6cymb "0.5"
+chextra $ p6cymb "0.8" -- "0.5" to "0.8"
 
 chbass silence
 chdrum $ sound "{k, [~ ~ ~ k:1] [~ k:1]}"
@@ -412,7 +407,7 @@ chdrum $ stack [
    whenmod 8 4 (0.5 ~>) $ sound "[~ sn]/4"
 ]
 
-d7 $ p6cymb "0.8"
+chextra $ p6cymb "0.8"
 
 d6 $ within (0, 0.5) (slow (7%6)) $ every 2 (0.5 <~) $ slow 8 $ rev . chop 32 $ bassParams $ sound "[dubb dubb:1]/2"
 
