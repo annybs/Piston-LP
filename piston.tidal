@@ -376,8 +376,8 @@ let p6cymb g = within (0.5,1) (|+| vowel "e") $ (0.5 ~>) $ chop 2 $ sound "[cymb
                |+| shape ((/3) <$> density 3.6 saw1)
                |+| gain g
 
-d7 $ p6cymb "0.1"
-d7 $ p6cymb "0.8" -- "0.1" to "0.8"
+d7 $ p6cymb "0.5"
+d7 $ p6cymb "0.8" -- "0.5" to "0.8"
 
 chbass silence
 chdrum $ sound "{k, [~ ~ ~ k:1] [~ k:1]}"
@@ -403,24 +403,22 @@ d4 $ iter 4 $ density (9%8) $ within (0, 0.5) rev $ smash 8 [1,2] $ sound "[gnom
 
 msil [d1,d5,d6,d7]
 
+d5 $ whenmod 5 3 rev $ slow 16 $ jux ((1.5 ~>).rev) $ chop 64 $ bassParams $ sound "fly:1"
+   |+| speed "0.7"
+   |+| shape ((/2) <$> density 2.1 saw1)
+
 chdrum $ stack [
    sound "[[k k:1]*2 [~ k:1 ~ k] [~ k:1 k ~] [~ ~ ~ k]]/8",
    whenmod 8 4 (0.5 ~>) $ sound "[~ sn]/4"
 ]
 
-d7 $ within (0,0.33) (iter 2) $ within (0.5,1) (|+| vowel "e") $ (0.5 ~>) $ chop 2 $ sound "[cymb*4 cymb*3]/8"
-  |+| shape ((/3) <$> density 3.6 saw1)
-  |+| gain "0.9"
-
-d5 $ whenmod 5 3 rev $ slow 16 $ jux ((1.5 ~>).rev) $ chop 64 $ bassParams $ sound "fly:1"
-   |+| speed "0.7"
-   |+| shape ((/2) <$> density 2.1 saw1)
+d7 $ p6cymb "0.8"
 
 d6 $ within (0, 0.5) (slow (7%6)) $ every 2 (0.5 <~) $ slow 8 $ rev . chop 32 $ bassParams $ sound "[dubb dubb:1]/2"
 
 chdrum $ sound "{k, [~ ~ ~ k:1] [~ k:1], [~ sn ~ sn*2]/8}"
 
-msil [d2,d5,d6,d7]
+msil [d2,d5,d6]
 
 chdrum $ whenmod 3 2 (slow (4%3)) $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
 
@@ -554,10 +552,7 @@ piston 6.b [9]
 
 msil [d4,d6,d7,d8,d9]
 
-d9 $ (0.75 ~>) $ whenmod 5 3 (density (3%2) . brak) $ bassParams $ rev $ (0.5 ~>) $ slow 2 . chop 8 $ sound "[dubb dubb:1]/2"
-   |+| speed "0.5"
-   |+| cut "1"
-   |+| end "0.5"
+d9 $ (0.75 ~>) $ p4bass
 
 chextra $ every 3 brak $ whenmod 7 4 (within (0.5, 1) (density 2)) $ (0.5 <~) $ slow 16 . chop 32 $ sound (samples "~ bzl" (density 1.5 "0 1"))
    |+| cut "1"
@@ -565,10 +560,7 @@ chextra $ every 3 brak $ whenmod 7 4 (within (0.5, 1) (density 2)) $ (0.5 <~) $ 
    |+| pan ((+0.25).(/2) <$> density 4.2 sinewave1)
 
 d9 $ stack [
-   (0.75 ~>) $ whenmod 5 3 (density (3%2) . brak) $ bassParams $ rev $ (0.5 ~>) $ slow 2 . chop 8 $ sound "[dubb dubb:1]/2"
-   |+| speed "0.5"
-   |+| cut "1"
-   |+| end "0.5",
+  (0.75 ~>) $ p4bass,
    every 2 (density 2) $ whenmod 3 2 (density 1.6) $ chop 16 $ bassParams $ sound (samples "[~ dubb]" (slow 4 "0 1"))
    |+| cut "1"
    |+| speed ((+0.75).(/2) <$> slow 1.3 sinewave1)
@@ -586,20 +578,15 @@ d4 $ whenmod 5 3 rev $ brak $ slow 16 $ jux ((1.5 ~>).rev) $ chop 64 $ bassParam
    |+| speed "0.7"
    |+| shape ((/2) <$> density 2.1 saw1)
 
-d6 $ within (0, 0.5) (slow (7%6)) $ every 2 (0.5 <~) $ slow 8 $ rev . chop 32 $ bassParams $ sound "[dubb dubb:1]/2"
-
-d8 $ (3 ~>) $ within (0.25, 0.75) rev $ slowspread ($) [chop 16, chop 32] $ sound "[wtsn(3,8)]/2"
-   |+| speed ((+0.8).(/2) <$> density 1.8 sinewave1)
-
 chextra $ stack [
-  iter 4 . density 2 $ (0.5 <~) $ ((1%16) <~) $ chop 16 $ sound "[ice [~ ice] ~ ~]/4"
-   |+| gain "0.7"
-   |+| vowel "e o",
   every 3 brak $ whenmod 7 4 (within (0.5, 1) (density 2)) $ (0.5 <~) $ slow 16 . chop 32 $ sound (samples "~ bzl" (density 1.5 "0 1"))
    |+| cut "1"
    |+| speed ((+1.6) <$> density 2.2 sinewave1)
-   |+| pan ((+0.25).(/2) <$> density 4.2 sinewave1)
-]
+   |+| pan ((+0.25).(/2) <$> density 4.2 sinewave1),
+  p6cymb "0.8"
+  ]
+
+d6 $ within (0, 0.5) (slow (7%6)) $ every 2 (0.5 <~) $ slow 8 $ rev . chop 32 $ bassParams $ sound "[dubb dubb:1]/2"
 
 {-
 chextra $ iter 4 . density 2 $ (0.5 <~) $ ((1%16) <~) $ chop 16 $ sound "[ice [~ ice] ~ ~]/4"
@@ -614,6 +601,17 @@ d4 $ stack [
    iter 4 $ density (9%8) $ within (0, 0.5) rev $ smash 8 [1,2] $ sound "[gnome(3,8)]/2"
    |+| gain "0.8"
    |+| speed ((+0.76).(/3) <$> slow 1.1 sinewave1)
+]
+
+chextra $ stack [
+  iter 4 . density 2 $ (0.5 <~) $ ((1%16) <~) $ chop 16 $ sound "[ice [~ ice] ~ ~]/4"
+   |+| gain "0.7"
+   |+| vowel "e o",
+  every 3 brak $ whenmod 7 4 (within (0.5, 1) (density 2)) $ (0.5 <~) $ slow 16 . chop 32 $ sound (samples "~ bzl" (density 1.5 "0 1"))
+   |+| cut "1"
+   |+| speed ((+1.6) <$> density 2.2 sinewave1)
+   |+| pan ((+0.25).(/2) <$> density 4.2 sinewave1),
+  p6cymb "0.8"
 ]
 
 msil [d5,d7,d8,d9]
