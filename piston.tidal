@@ -364,20 +364,23 @@ d6 $ within (0, 0.5) (slow (7%6)) $ every 2 (0.5 <~) $ slow 8 $ rev . chop 32 $ 
 d5 $ superimpose (slow (5%3) . iter 2) $ (|+| speed ((+0.7) <$> slow 1.1 sinewave1)) $ chop 32 $ sound "[plode(5,8)]/8"
    |+| cut "1"
 
+d7 $ sound "cymb/8"
+
+d7 $ sound "[cymb*8 ~]/8"
+   |+| gain ((+0.7).(/3) <$> density 3.6 saw1)
+   |+| cut "1"
+
 chdrum2 $ sound "wt*2"
    |+| vowel "[u e u a]/2"
-
-let p6cymb g = within (0.5,1) (|+| vowel "e") $ (0.5 ~>) $ chop 2 $ sound "[cymb*4 cymb*3]/8"
-               |+| shape ((/3) <$> density 3.6 saw1)
-               |+| gain g
-
-chextra $ p6cymb "0.5"
-chextra $ p6cymb "0.8" -- "0.5" to "0.8"
 
 chbass silence
 chdrum $ sound "{k, [~ ~ ~ k:1] [~ k:1]}"
 
 d4 $ slow 16 $ rev . chop 64 $ bassParams $ sound "[dubb dubb:1]/2"
+
+d7 $ density (5%4) $ whenmod 9 4 (density 1.5) $ sound "[cymb*8 cymb*3]/8"
+   |+| gain ((+0.7).(/3) <$> density 3.6 saw1)
+   |+| cut "1"
 
 d8 $ (3 ~>) $ within (0.25, 0.75) rev $ slowspread ($) [chop 16, chop 32] $ sound "[wtsn(3,8)]/2"
    |+| speed ((+0.8).(/2) <$> density 1.8 sinewave1)
@@ -396,7 +399,7 @@ d4 $ iter 4 $ density (9%8) $ within (0, 0.5) rev $ smash 8 [1,2] $ sound "[gnom
    |+| gain "0.8"
    |+| speed ((+0.76).(/3) <$> slow 1.1 sinewave1)
 
-msil [d1,d5,d6,d7]
+msil [chdrum,d5,d6,d7]
 
 d5 $ whenmod 5 3 rev $ slow 16 $ jux ((1.5 ~>).rev) $ chop 64 $ bassParams $ sound "fly:1"
    |+| speed "0.7"
@@ -407,13 +410,22 @@ chdrum $ stack [
    whenmod 8 4 (0.5 ~>) $ sound "[~ sn]/4"
 ]
 
-chextra $ p6cymb "0.8"
+{- ?
+
+let p6cymb g = within (0.5,1) (|+| vowel "e") $ (0.5 ~>) $ chop 2 $ sound "[cymb*4 cymb*3]/8"
+               |+| shape ((/3) <$> density 3.6 saw1)
+               |+| gain g
+
+chextra $ p6cymb "0.71"
+
+-}
 
 d6 $ within (0, 0.5) (slow (7%6)) $ every 2 (0.5 <~) $ slow 8 $ rev . chop 32 $ bassParams $ sound "[dubb dubb:1]/2"
 
 chdrum $ sound "{k, [~ ~ ~ k:1] [~ k:1], [~ sn ~ sn*2]/8}"
 
 msil [d2,d5,d6]
+chextra silence
 
 chdrum $ whenmod 3 2 (slow (4%3)) $ sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
 
@@ -577,8 +589,7 @@ chextra $ stack [
   every 3 brak $ whenmod 7 4 (within (0.5, 1) (density 2)) $ (0.5 <~) $ slow 16 . chop 32 $ sound (samples "~ bzl" (density 1.5 "0 1"))
    |+| cut "1"
    |+| speed ((+1.6) <$> density 2.2 sinewave1)
-   |+| pan ((+0.25).(/2) <$> density 4.2 sinewave1),
-  p6cymb "0.8"
+   |+| pan ((+0.25).(/2) <$> density 4.2 sinewave1)
   ]
 
 d6 $ within (0, 0.5) (slow (7%6)) $ every 2 (0.5 <~) $ slow 8 $ rev . chop 32 $ bassParams $ sound "[dubb dubb:1]/2"
@@ -605,8 +616,7 @@ chextra $ stack [
   every 3 brak $ whenmod 7 4 (within (0.5, 1) (density 2)) $ (0.5 <~) $ slow 16 . chop 32 $ sound (samples "~ bzl" (density 1.5 "0 1"))
    |+| cut "1"
    |+| speed ((+1.6) <$> density 2.2 sinewave1)
-   |+| pan ((+0.25).(/2) <$> density 4.2 sinewave1),
-  p6cymb "0.8"
+   |+| pan ((+0.25).(/2) <$> density 4.2 sinewave1)
 ]
 
 msil [d5,d7,d8,d9]
