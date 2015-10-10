@@ -609,7 +609,7 @@ d'drum $ sound "[k*2 [sn ~ ~ k] [k k*2] sn]/4"
 
 d'shard $ whenmod 7 3 (density (5%4)) $ plox'4 "[ice plode]*2"
 d'fly $ fly'5 True
-d'ant $ bass'6
+d'ant $ bass2'6
 d'gnome $ gnome'6 3
 d'bz $ overlay shard'3f $ every 3 brak $ bzox'4 "~ bzl"
 
