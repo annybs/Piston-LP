@@ -62,14 +62,13 @@ d'bass $ slow 8 $ (0.25 <~) $ bass' 16
 d'perc $ sound "{wt/2, [~ wtsn]/8}"
 
 -- yes
-d'drum $ sound "k"
-d'drum $ sound "{k, ~ sn}"
+d'drum $ k
+d'drum $ overlay sn $ k
 
 -- yes!
-d'fly $ fly'1f
+d'fly $ whenmod 5 2 (|+| vowel "i o") $ whenmod 3 1 (slow 2) $ brak $ fly'1
 
 -- now it's a thing
-d'perc $ snare43'1
 d'perc $ snare43'1
 d'perc $ whenmod 5 3 rev $ snare43'1
 d'perc $ whenmod 5 3 (rev . chop 8) $ snare43'1
@@ -164,8 +163,6 @@ d'shard $ every 2 (density 1.5) $ whenmod 5 3 (density 2) $ rev $ shard'2
 msil [d'perc,d'fly]
 d'drum $ (0.5 <~) $ sound "[[k:1 k] [~ [sn k:1]]]/2"
 d'perc $ sound "~ wt*2"
-d'cymb $ (0.25 ~>) $ cymb'2 "0.65"
-d'drum $ (0.5 <~) $ sound "[[k:1 k] [~ [sn k:1]]]/2"
 
 {-
 [3]
@@ -196,7 +193,7 @@ let shard'3f = iter 4 . density 2 $ (0.5 <~) $ ((1%16) <~) $ shard'2
                |+| vowel "e o"
 
 -- go
-d'drum $ sound "k"
+d'drum $ k
 msil [d'bass,d'cymb]
 
 d'bz $ sound "[ff(3,8) [~ [ff bz]]]/4"
@@ -466,7 +463,6 @@ d'drum $ stack [
 
 d'cymb $ (0.5 <~) $ cymb'2 "0.7"
 
-d'cymb $ density (5%4) $ whenmod 9 4 (density 1.5) $ cymb'6
 d'bz $ bass2'6
 d'drum $ drum'6f
 
@@ -598,8 +594,6 @@ msil [d'fly,d'bz,d'shard,d'misc,d'ant,d'cymb]
 
 d'misc $ (0.75 ~>) $ bass'4
 
-d'bz $ every 3 brak $ bzox'4 "~ bzl"
-
 d'misc $ stack [
   (0.75 ~>) $ bass'4,
   bass'5f
@@ -611,12 +605,14 @@ d'shard $ whenmod 7 3 (density (5%4)) $ plox'4 "[ice plode]*2"
 d'fly $ fly'5 True
 d'ant $ bass2'6
 d'gnome $ gnome'6 3
-d'bz $ overlay shard'3f $ every 3 brak $ bzox'4 "~ bzl"
+d'bz $ shard'3f
 
-msil [d'fly,d'shard,d'misc,d'bz]
-d'misc $ (0.75 ~>) $ bass'4
+msil [d'fly,d'shard,d'bz]
+
 d'cymb $ (2.75 ~>) $ cymb'2 "0.7"
-msil [d'gnome, d'ant]
+d'bz $ every 3 brak $ bzox'4 "~ bzl"
+msil [d'gnome,d'ant]
+msil [d'misc,d'cymb,d'bz]
 
 solo $ d'perc $ within (0.5, 1) (slow (3%2) . chop 4) $ whenmod 5 3 (rev . chop 8) $ snare43'1
 
