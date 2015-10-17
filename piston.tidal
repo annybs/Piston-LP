@@ -27,8 +27,8 @@ let k = sound "k"
 let sn = sound "[~ sn]/2"
 
 let bass'params = (|+| gain "0.7").
-                 (|+| hcutoff "0.022").
-                 (|+| hresonance "0.001")
+                  (|+| hcutoff "0.022").
+                  (|+| hresonance "0.001")
 
 let bass' c = rev . chop c $ bass'params $ sound "[dubb dubb:1]/2"
 
@@ -37,8 +37,8 @@ let bass' c = rev . chop c $ bass'params $ sound "[dubb dubb:1]/2"
 -}
 
 let fly'1 = slow 16 $ jux (0.5 <~) $ rev . striate 256 $ sound "fly"
-               |+| hcutoff "0.09"
-               |+| hresonance "0.06"
+            |+| hcutoff "0.09"
+            |+| hresonance "0.06"
 
 {- n.b. defs suffixed with 'nf are final-ish versions for reuse in
 later sections. saves copying extra functions -}
