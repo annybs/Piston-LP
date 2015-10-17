@@ -1,0 +1,31 @@
+{-
+piston lp
+by aneurin "anny" barker snook
+http://anny.audio
+
+this is a summary document to aid live performance,
+see piston.tidal for full detail
+-}
+
+cps (138/60)
+
+-- [1]
+
+d'bass $ slow 8 $ (0.25 <~) $ bass' 16
+d'bass $ (every 2 $ within (0.25, 0.75) (0.5 ~>)) $ slow 8 $ bass' 16
+
+d'drum $ within (0.5, 1) (chop 8) $ overlay shnare'1 $ kick38'1
+d'drum $ overlay ((3.75 ~>) $ sound "wtsn/4") $ overlay sn $ kick38'1
+
+d'fly $ whenmod 5 2 (|+| vowel "i o") $ whenmod 3 1 (slow 2) $ brak $ fly'1 |+| gain "1"
+
+d'gnome $ gnome'1
+
+d'perc $ sound "{wt/2, [~ wtsn]/8}"
+d'perc $ within (0.5, 1) (slow 1.5 . chop 4) $ whenmod 5 3 (rev . chop 8) $ snare43'1
+d'perc $ sound "[~ wt*4 ~ wt*2 ~]/5"
+
+-- [2]
+-- silence d'fly, d'gnome
+
+d'drum $ sound "[k [sn k] [k sn] [~ sn] [~ k] sn [k [k wtsn]]]/7"
