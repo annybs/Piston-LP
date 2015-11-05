@@ -3,29 +3,248 @@ piston lp
 by aneurin "anny" barker snook
 http://anny.audio
 
-this is a summary document to aid live performance,
-see piston.tidal for full detail
+a summary document to aid live performance,
+see piston.tidal for full composition notes
 -}
 
 cps (138/60)
 
 -- [1]
 
-d'bass $ slow 8 $ (0.25 <~) $ bass' 16
-d'bass $ (every 2 $ within (0.25, 0.75) (0.5 ~>)) $ slow 8 $ bass' 16
+d'fly $ whenmod 5 2 (# vowel "i o") $ whenmod 3 1 (slow 2) $ brak $ -- takeoff
+  fly'1 # gain "1" -- intro
 
-d'drum $ within (0.5, 1) (chop 8) $ overlay shnare'1 $ kick38'1
-d'drum $ overlay ((3.75 ~>) $ sound "wtsn/4") $ overlay sn $ kick38'1
+d'perc $ sound "{wt/2, [~ wtsn]/8}" -- start wt/2 only
 
-d'fly $ whenmod 5 2 (|+| vowel "i o") $ whenmod 3 1 (slow 2) $ brak $ fly'1 |+| gain "1"
+d'bass $ slow 8 $ (0.25 <~) $
+  bass' 16
+
+d'perc $ within (0.5, 1) (slow 1.5 . chop 4) $
+  whenmod 5 3 (rev . chop 8) $ -- only rev 1st
+  snare43'1
 
 d'gnome $ gnome'1
 
-d'perc $ sound "{wt/2, [~ wtsn]/8}"
-d'perc $ within (0.5, 1) (slow 1.5 . chop 4) $ whenmod 5 3 (rev . chop 8) $ snare43'1
-d'perc $ sound "[~ wt*4 ~ wt*2 ~]/5"
+d'drum $ within (0.5, 1) (chop 8) $ -- briefly, after bass'1'm
+  overlay shnare'1 $ kick38'1 -- overlay sn 1st
+
+d'bass $ bass'1'm $
+  slow 8 $ bass' 16
+
+d'drum $ overlay ((3.75 ~>) $ sound "wtsn/4") $ -- for transition to 2
+  overlay sn $ kick38'1
 
 -- [2]
--- silence d'fly, d'gnome
+-- silence fly, gnome
 
+d'perc $ sound "[~ wt*4 ~ wt*2 ~]/5"
 d'drum $ sound "[k [sn k] [k sn] [~ sn] [~ k] sn [k [k wtsn]]]/7"
+
+d'perc $ wt'2
+d'bass $ bass'2
+d'ant $ ant'2
+d'shard $ ((1%16) <~) $ shard'2
+d'fly $ fly'2
+
+d'drum $ (0.5 <~) $ sound "[[k k:1] [sn ~ ~ k]]/2"
+
+d'cymb $ whenmod 5 3 (density 3) $
+  (0.25 ~>) $ cymb'2 "0.65"
+
+d'shard $ every 2 (density 1.5) $ whenmod 5 3 (density 2) $
+  rev $ shard'2
+  # shape ((+0.25).(/2) <$> density 8 saw1)
+
+d'drum $ sound "[[k sn] [~ k:1 k:1 ~]]/2"
+d'drum $ sound "[k [sn k:1 k:1 ~]]/2"
+d'perc $ sound "~ wt*2"
+
+-- [3]
+-- silence bass, cymb
+
+d'drum $ k
+d'bz $ bz'3
+
+d'drum $ sound "[k k sn k]/2"
+d'drum $ drum'3
+d'bass $ bass'3 "o i" "1" True
+
+d'perc $ within (0, 0.5) (# vowel "o") $
+  whenmod 3 2 rev $ chop 16 $
+  within (0.5, 1.5) (perc'3'delay) $
+  overlay (sound "~ wt*2") $
+  perc'3
+
+d'misc $ bass2'3
+
+d'shard $ iter 4 . density 2 $ -- last bit that makes it greatsome
+  (0.5 <~) $ ((1%16) <~) $ shard'2
+  # vowel "e o"
+  # gain "0.6"
+
+d'gnome $ gnome'1
+
+-- [4]
+-- solo misc
+
+d'perc $ smash 4 [0.5,0.25] $ iter 3 $
+  drum5'4
+
+d'shard $ whenmod 7 3 (density (5%4)) $
+  plox'4 "[ice plode]*2"
+
+d'drum $ sound "[k sn k*2 [~ sn] [~ k]]/5"
+d'drum $ sound "[[k k:1]*2 sn k*2 [~ sn] [~ k]]/5"
+
+d'bz $ bz'4
+
+d'bass $ (0.75 ~>) $ bass'4
+
+d'bz $ every 3 brak $ -- every 2 @ end
+  bzox'4 "bz bzl" -- bz, bz*2, bz bzl
+
+d'drum $ sound "[k*2 sn [~ k] sn]/4"
+
+d'shard $ whenmod 7 3 (density (5%4)) $
+  plox'4 "[ice wtsn]*2"
+  # vowel "u e"
+
+-- [5]
+
+d'perc $ perc'5
+d'drum $ overlay (sound "[[k ~ ~ k] ~ [~ k] ~]/4") $ drum'5
+d'ant $ ant'2
+
+-- rapidly
+d'drum $ drum'5
+msil [d'bz,d'ant]
+d'drum $ overlay k $ drum'5
+
+d'bass $ within (0.5, 0.75) (# vowel "u o") $
+  every 2 (density 2) $
+  whenmod 3 2 (density 1.6) $ -- restore whenmod before within ^
+  bass'5
+  # speed ((+0.75).(/2) <$> slow 1.3 sinewave1) -- b4 d'bz speed
+
+d'fly $ fly'5 False
+
+d'bz $ within (0, 0.5) rev $
+  whenmod 4 3 (density 1.8) $
+  bass2'5
+  # shape ((/3) <$> density 3 sinewave1)
+
+d'shard $ whenmod 5 3 (slow 1.5) $ rev $ stack [
+  gnome'5 [0.5,1] id,
+  gnome'5 [(1/2.5),1] (0.5 <~)
+  ]
+
+-- [6]
+
+solo $ d'bass $ bass'6
+d'bz $ bass2'6
+d'fly $ plode'6
+
+d'cymb $ density (5%4) $ whenmod 9 4 (density 1.5) $
+  cymb'6
+
+d'perc $ wt'2
+
+d'drum $ overlay sn'6 $
+  drum'6
+
+d'misc $ slow 16 $ bass' 64
+d'gnome $ wtsn'6
+d'bass $ (0.6 ~>) $ bass'4
+d'gnome $ gnome'6 3 -- 5 then 3
+
+d'drum $ sound "[[k k:1]*2 [sn k:1 ~ k] [~ k:1 k ~] [~ sn ~ k]]/8"
+
+d'fly $ fly'5 False
+d'cymb $ (0.5 <~) $ cymb'2 "0.7"
+
+-- [7]
+
+solo $ d'drum $ whenmod 3 2 (slow (4%3)) $
+  sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
+
+d'drum $ every 3 (density 2) $
+  within (0, 0.5) (jux ((1%3) ~>)) $
+  sound "[k [sn ~ k] [~ ~ sn] ~]/8"
+
+d'shard $ shard'7 "0.02" -- later, 0.76
+
+hush
+d'drum $ sound "[k [sn ~ k] [~ ~ sn] ~]/8"
+
+d'perc $ sound "[wt*3 ~]/2"
+  # shape ((/2) <$> slow 3 saw1)
+
+d'bass $
+  (# begin (bass'7'm id)) $
+  (# end (bass'7'm (+0.05))) $
+  bass'7 id
+
+d'fly $ fly'7
+  # delay "0.6"
+  # delayfeedback "0.4"
+  # delaytime "0.62"
+
+d'bz $ rev . chop 12 $ sound "bz/4"
+  # vowel "o"
+
+d'drum $ sound "{[[k ~ k] k]/2, ~ sn}"
+
+d'bass $ bass'7 (within (0.33, 0.67) (0.25 ~>))
+  # vowel "o"
+
+d'drum $ within (0, 0.5) (jux ((1%3) ~>)) $ -- jux -> superimpose, in 8
+  sound "[k [sn ~ k] [~ ~ sn] ~]/8"
+
+-- [8]
+-- silence bass, bz
+
+d'bass $ slow 16 $ bass' 32 -- then 64
+d'bz $ bz'8 # gain "0.8"
+d'drum $ sound "[k*2 [sn ~ ~ wt] [~ k] sn [~ k]]/5"
+d'drum $ sound "[k [sn ~ ~ wt] [~ k] sn]/4" -- swap wt for k
+d'ant $ ant'2
+d'misc $ fly'2
+d'shard $ bass'5f
+d'perc $ sound "{wt/2, [~ wtsn]/8}"
+d'cymb $ cymb'6f
+
+d'perc $ overlay fly'1f $ -- 2nd last
+  within (0.5, 1) (slow (3%2) . chop 4) $ -- last
+  whenmod 5 3 (rev . chop 8) $ -- only rev 1st
+  snare43'1
+
+-- [9]
+
+msil [d'fly,d'bz,d'shard,d'misc,d'ant,d'cymb]
+
+d'misc $ overlay bass'5f $
+  (0.75 ~>) $ bass'4
+
+d'drum $ sound "[k*2 [sn ~ ~ k] [k k*2] sn]/4"
+
+d'shard $ whenmod 7 3 (density (5%4)) $ plox'4 "[ice plode]*2"
+d'fly $ fly'5 True
+d'ant $ bass2'6
+d'gnome $ gnome'6 3
+d'cymb $ wtsn'6
+
+d'bz $ within (0.5, 1) (density 2) $
+  shard'3f
+
+msil [d'fly,d'shard,d'bz,d'misc,d'cymb]
+d'misc $ (0.75 ~>) $ bass'4
+d'cymb $ (2.75 ~>) $ cymb'2 "0.7"
+d'bz $ every 3 brak $ bzox'4 "~ bzl"
+msil [d'gnome,d'ant]
+msil [d'bz,d'cymb,d'misc]
+
+solo $ d'perc $ within (0.5, 1) (slow (3%2) . chop 4) $
+  whenmod 5 3 (rev . chop 8) $
+  snare43'1
+
+hush
