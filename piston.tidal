@@ -442,7 +442,6 @@ msil [d'drum,d'fly]
 
 d'bz $ bass2'6
 d'fly $ plode'6
-d'cymb $ sound "cymb/8"
 d'cymb $ cymb'6
 
 d'perc $ wt'2

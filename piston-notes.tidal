@@ -39,9 +39,12 @@ d'drum $ overlay ((3.75 ~>) $ sound "wtsn/4") $ -- for transition to 2
 
 d'perc $ sound "[~ wt*4 ~ wt*2 ~]/5"
 d'drum $ sound "[k [sn k] [k sn] [~ sn] [~ k] sn [k [k wtsn]]]/7"
-
 d'perc $ wt'2
-d'bass $ bass'2
+
+d'bass $ bass'2 -- synth params only in pt 2.5
+  # vowel "u a"
+  # speed "0.8 1.2"
+
 d'ant $ ant'2
 d'shard $ ((1%16) <~) $ shard'2
 d'fly $ fly'2
@@ -60,7 +63,7 @@ d'drum $ sound "[k [sn k:1 k:1 ~]]/2"
 d'perc $ sound "~ wt*2"
 
 -- [3]
--- silence bass, cymb
+-- silence bass, cymb, fly
 
 d'drum $ k
 d'bz $ bz'3
@@ -163,6 +166,7 @@ d'fly $ fly'5 False
 d'cymb $ (0.5 <~) $ cymb'2 "0.7"
 
 -- [7]
+-- silence perc, fly, bz
 
 solo $ d'drum $ whenmod 3 2 (slow (4%3)) $
   sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
