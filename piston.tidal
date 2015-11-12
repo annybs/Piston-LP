@@ -444,7 +444,7 @@ d'bz $ bass2'6
 d'fly $ plode'6
 d'cymb $ cymb'6
 
-d'perc $ wt'2
+d'perc $ wt'2 # gain "0.85"
 
 d'bass silence
 d'drum $ drum'6

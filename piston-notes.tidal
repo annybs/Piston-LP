@@ -87,6 +87,8 @@ d'shard $ iter 4 . density 2 $ -- last bit that makes it greatsome
 
 d'gnome $ gnome'1
 
+d'drum $ sound "[k k sn k*2]/2"
+
 -- [4]
 -- solo misc
 
@@ -150,7 +152,7 @@ d'fly $ plode'6
 d'cymb $ density (5%4) $ whenmod 9 4 (density 1.5) $
   cymb'6
 
-d'perc $ wt'2
+d'perc $ wt'2 # gain "0.85"
 
 d'drum $ overlay sn'6 $
   drum'6
@@ -166,7 +168,7 @@ d'fly $ fly'5 False
 d'cymb $ (0.5 <~) $ cymb'2 "0.7"
 
 -- [7]
--- silence perc, fly, bz
+-- silence fly, bz, ...gnome
 
 solo $ d'drum $ whenmod 3 2 (slow (4%3)) $
   sound "[k*2 [sn ~ ~ wt] k*2 sn [~ k]]/5"
@@ -208,7 +210,7 @@ d'drum $ within (0, 0.5) (jux ((1%3) ~>)) $ -- jux -> superimpose, in 8
 -- silence bass, bz
 
 d'bass $ slow 16 $ bass' 32 -- then 64
-d'bz $ bz'8 # gain "0.8"
+d'bz $ bz'8 # gain "0.9"
 d'drum $ sound "[k*2 [sn ~ ~ wt] [~ k] sn [~ k]]/5"
 d'drum $ sound "[k [sn ~ ~ wt] [~ k] sn]/4" -- swap wt for k
 d'ant $ ant'2
@@ -234,8 +236,9 @@ d'drum $ sound "[k*2 [sn ~ ~ k] [k k*2] sn]/4"
 d'shard $ whenmod 7 3 (density (5%4)) $ plox'4 "[ice plode]*2"
 d'fly $ fly'5 True
 d'ant $ bass2'6
-d'gnome $ gnome'6 3
 d'cymb $ wtsn'6
+
+d'gnome $ gnome'6 3
 
 d'bz $ within (0.5, 1) (density 2) $
   shard'3f
