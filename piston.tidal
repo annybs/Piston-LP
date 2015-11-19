@@ -59,8 +59,8 @@ let bass'1'm = every 2 $ within (0.25, 0.75) (0.5 ~>)
 cps (138/60)
 d'fly $ fly'1 |=| gain "0.5"
 d'fly $ fly'1 |=| gain "1"
-d'drum $ k1
 d'perc $ sound "wt/2"
+d'drum $ k1
 d'bass $ slow 8 $ (0.25 <~) $ bass' 16
 d'perc $ sound "{wt/2, [~ wtsn]/8}"
 
@@ -78,7 +78,6 @@ d'perc $ whenmod 5 3 (rev . chop 8) $ snare43'1
 d'perc $ within (0.5, 1) (slow 1.5 . chop 4) $ whenmod 5 3 (rev . chop 8) $ snare43'1
 
 d'gnome $ gnome'1
-
 d'drum $ overlay shnare'1 $ sound "k"
 
 -- stop! rebuild
@@ -133,8 +132,8 @@ let cymb'2 g = within (0.5,1) (|=| vowel "e") $
                |=| gain g
 
 -- go
-msil [d'fly,d'gnome]
 d'drum $ sound "[k [sn k] [k sn] [~ sn] [~ k] sn [k [k wtsn]]]/7"
+msil [d'fly,d'gnome]
 d'perc $ wt'2
 d'bass $ bass'2
 d'ant $ ant'2
@@ -149,18 +148,17 @@ d'drum $ (0.5 <~) $ sound "[[k k:1] [sn ~ ~ k]]/2"
 d'bass $ bass'2
 d'cymb $ (0.25 ~>) $ cymb'2 "0.65"
 d'perc $ wt'2
-d'cymb $ whenmod 5 3 (density 3) $ (0.25 ~>) $ cymb'2 "0.65"
 d'bass $ bass'2 |=| vowel "u a"
-
--- tweak out
-d'bass $ bass'2 |=| vowel "u a"
-  |=| speed "0.8 1.2"
 
 d'shard $ rev $ shard'2
   |=| shape ((+0.25).(/2) <$> density 8 saw1)
 
 d'shard $ every 2 (density 1.5) $ whenmod 5 3 (density 2) $ rev $ shard'2
    |=| shape ((+0.25).(/2) <$> density 8 saw1)
+
+-- tweak out
+d'bass $ bass'2 |=| vowel "u a"
+  |=| speed "0.8 1.2"
 
 msil [d'perc,d'fly]
 d'drum $ sound "[[k sn] [~ k:1 k:1 ~]]/2"
@@ -202,8 +200,8 @@ let shard'3f = iter 4 . density 2 $ (0.5 <~) $ ((1%16) <~) $ shard'2
                |=| gain "0.6"
 
 -- go
-msil [d'bass,d'cymb]
 d'drum $ k
+msil [d'bass,d'cymb]
 d'bz $ bz'3
 
 d'drum silence
@@ -579,7 +577,6 @@ d'misc $ fly'2
 d'shard $ bass'5f
 
 d'perc $ sound "{wt/2, [~ wtsn]/8}"
-
 d'cymb $ cymb'6f
 
 d'perc $ snare43'1
