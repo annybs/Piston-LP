@@ -88,9 +88,9 @@ d'drum $ overlay sn $ kick38'1
 d'drum $ overlay shnare'1 $ kick38'1
 
 d'bass $ bass'1'm $ slow 8 $ bass' 16
+d'drum $ within (0.5, 1) (chop 8) $ overlay shnare'1 $ kick38'1
 
 msil [d'perc,d'fly]
-d'drum $ within (0.5, 1) (chop 8) $ overlay shnare'1 $ kick38'1
 d'fly $ fly'1
 d'perc $ sound "[~ wt*4 ~ wt*2 ~]/5"
 
@@ -603,18 +603,18 @@ d'drum $ sound "[k*2 [sn ~ ~ k] [k k*2] sn]/4"
 d'shard $ whenmod 7 3 (density (5%4)) $ plox'4 "[ice plode]*2"
 d'fly $ fly'5 True
 d'ant $ bass2'6
-d'gnome $ gnome'6 3
 d'cymb $ wtsn'6
-
+d'gnome $ gnome'6 5
 d'bz $ shard'3f
+d'gnome $ gnome'6 3
 d'bz $ within (0.5, 1) (density 2) $ shard'3f
 
 msil [d'fly,d'shard,d'bz,d'misc,d'cymb]
 d'misc $ (0.75 ~>) $ bass'4
 d'cymb $ (2.75 ~>) $ cymb'2 "0.7"
-d'bz $ every 3 brak $ bzox'4 "~ bzl"
 msil [d'gnome,d'ant]
-msil [d'bz,d'cymb]
+d'bz $ every 3 brak $ bzox'4 "~ bzl"
+msil [d'bz,d'cymb,d'misc]
 
 solo $ d'perc $ within (0.5, 1) (slow (3%2) . chop 4) $ whenmod 5 3 (rev . chop 8) $ snare43'1
 
