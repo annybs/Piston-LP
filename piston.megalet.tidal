@@ -1,8 +1,4 @@
-{-
-anny: piston lp megalet
-see piston.tidal for full composition
--}
-
+-- megalet for piston.tidal
 let d'drum = d1 -- k, sn
     d'perc = d2 -- wt, wtsn, hh
     d'gnome = d3 -- gnome, cymb
