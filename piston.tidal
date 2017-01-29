@@ -529,7 +529,7 @@ d'bass $ bass'7 id
 d'fly $ fly'7
 
 d'fly $ fly'7
-  # orbit "1"
+  # orbit "2"
   # delay "0.6"
   # delayfeedback "0.4"
   # delaytime "0.62" --(112/60)/3
@@ -544,7 +544,6 @@ d'bass $
   (# end (bass'7'm (+0.05))) $
   bass'7 id
 
--- TODO fix delay clashes with >2 orbits
 d'shard $ shard'7 "0.02"
 
 d'drum $ s "{[k k]/2, ~ sn}"
