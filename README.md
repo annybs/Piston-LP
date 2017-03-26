@@ -1,26 +1,23 @@
 # Anny: Piston LP
 
-A live-coded exploration of rhythm & self-reference over 8 movements, written throughout 2015 and performed at algoraves in the UK. Originally performed live @ Texture, Manchester, 12th November 2015. Album released 20th November 2015.
+Piston: minimal progressive techno built around recycled rhythms. Written to perform at algoraves in the UK, now available as a CD album and to download.
+
+Originally performed live @ Texture, Manchester, 12th November 2015. Album released 20th November 2015.
+
+[Buy Piston LP on Bandcamp](https://annyfm.bandcamp.com/album/piston-lp) (limited edition CD also available)
 
 _Anny is formerly Anny FM._
 
-## Listen to the album!
+## Files
 
-- [Buy Piston LP on Bandcamp](http://anny.audio/album/piston-lp) (limited edition CD also available)
-- [Stream Piston LP on SoundCloud](https://soundcloud.com/anny-fm/piston-lp)
+`piston.scd` is a simple SuperCollider startup file to configure audio routing and load project samples.
 
-## Source files
+`piston.tidal` is the full Piston composition for Tidal Cycles. (Current version compatible with Tidal 0.8)
 
-`piston.tidal` is the full composition for Tidal 0.6 (also compatible with 0.7) and will be maintained long term.
-
-`piston.megalet.tidal` contains a single `let` directive that when eval'd with `C-c C-e` will initialize all variables used in the composition.
-
-`piston-notes.tidal` are notes to myself for reference in a live performance.
-
-## Sample attributions
-
-TBC (I gotta go look them up!)
+`samples.csv` contains sample attributions. All samples are available in `samples/` directory.
 
 ## License
 
-Album recording is copyright &copy; Aneurin "Anny" Barker Snook 2015, but the source code and samples are all royalty free. Remix to your heart's content!
+Album recording is copyright &copy; Aneurin "Anny" Barker Snook 2015.
+
+Source code is [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) and samples are all royalty free. Remix to your heart's content!
