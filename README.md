@@ -1,6 +1,6 @@
 # Anny: Piston LP
 
-Piston: minimal progressive techno built around recycled rhythms. Written to perform at algoraves in the UK, now available as a CD album and to download.
+[anny.audio](https://www.anny.audio) | [pistonlp.co.uk](http://pistonlp.co.uk)
 
 Originally performed live @ Texture, Manchester, 12th November 2015. Album released 20th November 2015.
 
@@ -12,12 +12,12 @@ _Anny is formerly Anny FM._
 
 `piston.scd` is a simple SuperCollider startup file to configure audio routing and load project samples.
 
-`piston.tidal` is the full Piston composition for Tidal Cycles. (Current version compatible with Tidal 0.8)
+`piston.tidal` is the full Piston composition for Tidal Cycles.
 
 `samples.csv` contains sample attributions. All samples are available in `samples/` directory.
 
 ## License
 
-Album recording is copyright &copy; Aneurin "Anny" Barker Snook 2015.
+Album recording is copyright of Aneurin "Anny" Barker Snook 2015.
 
 Source code is [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) and samples are all royalty free. Remix to your heart's content!
