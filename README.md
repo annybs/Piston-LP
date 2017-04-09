@@ -18,6 +18,5 @@ _Anny is formerly Anny FM._
 
 ## License
 
-Album recording is copyright of Aneurin "Anny" Barker Snook 2015.
-
-Source code is [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) and samples are all royalty free. Remix to your heart's content!
+- Source code: [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+- Samples: see origins of sample attributions for individual licenses
