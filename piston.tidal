@@ -2,37 +2,22 @@
 Anny: Piston LP
 anny.audio | pistonlp.co.uk
 
-See README.md for more information
-
-~ Version info ~
-Current version: 1.0
-Compatibility: Tidal Cycles 0.8 + SuperCollider 3.7.2 + SuperDirt
+Current version: 1.0.1
+Compatibility: Tidal Cycles 1.0-dev + SuperDirt 1.0-dev + SuperCollider 3.8
 Updated: 27 March 2017
-Notes: All Piston LP Tidal code is now "demystified" so all code blocks
-       are all-inclusive and can be run in-place with a minimal megalet
-       at the top of the document, serving three purposes:
-       1) to make all the code easier for any Tidal Cycles user to
-          understand and if they wish, reuse and remix
-       2) to reduce maintenance, especially when playing parts of Piston LP
-          live; this file will be my primary reference in live practice
-       2) to contribute better to the shared goal in live coding of
-          showing my working-out in live performance
 License: CC-BY-SA https://creativecommons.org/licenses/by-sa/4.0/
 
-~ Navigating this Tidal Cycles document ~
-I have used @tags throughout this document to mark checkpoints (Piston I,
-Piston II etc.) and 'optimal' versions of key elements of each tune that
-I have found cause to reuse in crossover tracks. For example, to search
-for/within Piston I, search the document for "@p1".
-In places where elements are reused, particularly in later tracks, a
-references is made with the format "~p1..." so you know where it all links
-up (and I know where to copy-paste future updates).
+See README.md for more information
 -}
 
 let bpm b = cps (b/60)
     msil = mapM_ ($ silence)
-    bassP = (# gain "0.7") . (# hcutoff "485") . (# hresonance "0.001")
+    bassP = (# gain 0.7) . (# hcutoff 485) . (# hresonance 0.001)
     bass' c = rev . chop c $ bassP $ n "[0 1]/2" # s "dubb"
+    p3percd = (# orbit 1) .
+              (# delay 0.3) .
+              (# delayfeedback 0.5) .
+              (# delaytime 0.766) --(138/60)/3
     d'drum = d1
     d'perc = d2
     d'gnome = d3
@@ -54,9 +39,9 @@ bpm 138
 
 -- @p1fly
 d'fly $ slow 16 $ jux (0.5 <~) $ rev . striate 256 $ s "fly"
-  # hcutoff "1985" -- 0.09 * (44100/2)
-  # hresonance "0.06"
-  # gain "1" -- 0.5 -> 1
+  # hcutoff 1985 -- 0.09 * (44100/2)
+  # hresonance 0.06
+  # gain 1 -- 0.5 -> 1
 
 d'perc $ s "wt/2"
 d'drum $ sound "k:1"
@@ -69,17 +54,17 @@ d'drum $ s "[k*2, [~ sn]]/2"
 -- @p1fly'
 d'fly $ whenmod 5 2 (# vowel "i o") $ whenmod 3 1 (slow 2) $ brak $
   slow 16 $ jux (0.5 <~) $ rev . striate 256 $ s "fly"
-  # hcutoff "1985" -- 0.09 * (44100/2)
-  # hresonance "0.06"
+  # hcutoff 1985 -- 0.09 * (44100/2)
+  # hresonance 0.06
 
 -- @p1perc
 d'perc $ within (0.5, 1) (slow 1.5 . chop 4) $ -- (2)
   whenmod 5 3 (rev . chop 8) $ -- (0) rev (1) rev . chop 8
-  density (4%3) $ s "[wtsn ~ wt]"
+  density (4/3) $ s "[wtsn ~ wt]"
 
 -- @p1gnome
 d'gnome $ within (0, 0.5) rev $ chop 8 $ s "[gnome(3,8)]/2"
-  # gain "0.8"
+  # gain 0.8
   # speed (scale 0.8 1 $ slow 1.1 sine1)
 
 d'drum $ s "[k*2, ~ [sn [~ sn*3]/2]]/2"
@@ -96,9 +81,7 @@ d'drum $ within (0.5, 1) (chop 8) $ s "[k(3,8), ~ [sn [~ sn*3]/2]]/2"
 
 msil [d'perc, d'fly]
 
-d'fly $ slow 16 $ jux (0.5 <~) $ rev . striate 256 $ s "fly"
-  # hcutoff "1985" -- 0.09 * (44100/2)
-  # hresonance "0.06"
+-- ~p1fly
 
 d'perc $ s "[~ wt*4 ~ wt*2 ~]/5"
 d'drum $ overlay (3.75 ~> s "wtsn/4") $ s "[k(3,8), ~ sn]/2"
@@ -118,67 +101,57 @@ msil [d'fly, d'gnome]
 
 d'perc $ s "wt*2"
   # vowel "[u e u a]/2"
-  # end "0.15"
+  # end 0.15
 
+-- @p2bass
 d'bass $ slow 8 $ ((1%8) <~) $ chop 32 $ bassP $ n "[0 1]/2" # s "dubb"
-  # speed "1.2"
+  # speed 1.2
   # shape (scale 0 0.5 $ density 4 sine1)
-  # cut "1"
+  # cut 1
+  -- # vowel "u a" -- (1)
 
 -- @p2ant
 d'ant $ slow 2 $ smash 16 [1,2] $ sound "ant:1"
-  # cutoff "1764" -- 0.08 * (44100/2)
-  # resonance "0.01"
+  # cutoff 1764 -- 0.08 * (44100/2)
+  # resonance 0.01
 
 -- @p2sharda
 d'shard $ ((1%16) <~) $ chop 16 $ s "[ice [~ ice] ~ ~]/4"
-  # gain "0.7"
+  # gain 0.7
 
 -- @p2fly
 -- solo $ -- (1)
 d'fly $ chop 64 $ s "[fly ~ [fly ~ ~ fly] ~]/4"
-  # cut "1"
-  # begin "0.3"
-  # end "0.35"
+  # cut 1
+  # begin 0.3
+  # end 0.35
   # shape (scale 0.25 0.75 $ density 8 sine1)
-  # speed (scale 0.92 1.92 $ density (5%4) saw1)
+  # speed (scale 0.92 1.92 $ density (5/4) saw1)
 
 d'drum $ 0.5 <~ sound "[[k k:1] [sn ~ ~ k]]/2"
 
-d'bass $ slow 8 $ ((1%8) <~) $ chop 32 $ bassP $ n "[0 1]/2" # s "dubb"
-  # speed "1.2"
-  # shape (scale 0 0.5 $ density 4 sine1)
-  # cut "1"
+-- ~p2bass 
 
 d'cymb $ (0.25 ~>) $
   -- @p2cymb
   within (0.5, 1) (# vowel "e") $ (0.5 ~>) $ chop 2 $ s "[cymb*4 cymb*3]/8"
   # shape (scale 0 (1/3) $ density 3.6 saw1)
-  # gain "0.65"
+  # gain 0.65
 
 -- @p2perc
 d'perc $ s "wt*2"
   # vowel "[u e u a]/2"
-  # end "0.15"
+  # end 0.15
 
-d'bass $ slow 8 $ ((1%8) <~) $ chop 32 $ bassP $ n "[0 1]/2" # s "dubb"
-  # speed "1.2"
-  # shape (scale 0 0.5 $ density 4 sine1)
-  # cut "1"
-  # vowel "u a"
+-- ~p2bass @ (1)
 
 -- @p2shardb
-d'shard $ every 2 (density 1.5) $ whenmod 5 3 (density 2) $ -- (1)
+d'shard $
+  every 2 (density 1.5) $ whenmod 5 3 (density 2) $ -- (1)
   rev $
   chop 16 $ s "[ice [~ ice] ~ ~]/4"
-  # gain "0.7"
+  # gain 0.7
   # shape (scale 0.25 0.75 $ density 8 saw1)
-
-d'bass $ slow 8 $ ((1%8) <~) $ chop 32 $ bassP $ n "[0 1]/2" # s "dubb"
-  # speed "0.8 1.2"
-  # shape (scale 0 0.5 $ density 4 sine1)
-  # cut "1"
-  # vowel "u a"
 
 msil [d'perc, d'fly]
 
@@ -192,11 +165,6 @@ Anny: Piston III
 anny.audio | pistonlp.co.uk
 -}
 
-let p3percd = (# orbit "1") .
-              (# delay "0.3") .
-              (# delayfeedback "0.5") .
-              (# delaytime "0.766") --(138/60)/3
-
 bpm 138
 
 d'drum $ s "k"
@@ -204,9 +172,9 @@ msil [d'bass, d'cymb]
 
 -- @p3bz
 d'bz $ s "[ff(3,8) [~ [ff bz]]]/4"
-  # end "0.3"
+  # end 0.3
   # shape "0 0.25"
-  # gain "0.7"
+  # gain 0.7
 
 d'drum silence
 d'drum $ s "[k k sn k]/2" -- @p3druma
@@ -227,7 +195,7 @@ let v = "o i" -- (0) i (1) o i
 d'drum $ s "{[k*2 [~ k*2] k ~ k*2 ~ k*2 ~]/8, [~ sn]/2}" -- @p3drumb
 d'perc $ sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8"
 
--- @p3bass2
+-- ~p4dubb
 d'misc $ slow 8 $ chop 16 $ bassP $ n "[0 1]/2" # s "dubb"
   # cut "1"
   # speed "0.2"
@@ -242,7 +210,7 @@ d'perc $ -- within (0, 0.5) (# vowel "o") $ -- (3)
   sound "[[k:1 [~ k:1] k:1 [~ k:1]] sn]/8"
 
 -- @p3shard
-d'shard $ iter 4 . density 2 $ -- (1)
+d'shard $ iter 5 . density 2 $ -- (1)
   (0.5 <~) $ ((1%16) <~) $ chop 16 $ s "[ice [~ ice] ~ ~]/4"
   # gain "0.6" -- (0) 0.7 (1) 0.6
   # vowel "e o" -- (1)
@@ -262,31 +230,32 @@ anny.audio | pistonlp.co.uk
 
 bpm 138
 
+-- @p4dubb
 solo $ d'misc $ slow 8 $ chop 16 $ bassP $ n "[0 1]/2" # s "dubb"
-  # cut "1"
-  # speed "0.2"
+  # cut 1
+  # speed 0.2
   # vowel "e"
 
 d'perc $ sound "[[~ [wt wtsn]] ~ wt ~]/5"
 
 -- @p4shard
-d'shard $ whenmod 7 3 (density (5%4)) $ -- (1)
-  within (0.5, 0.75) (iter 4) $ whenmod 3 2 (slow 2) $ slow 8 $ every 2 rev $
+d'shard $ whenmod 7 3 (density (5/4)) $ -- (1)
+  within (0.5, 0.75) (iter 5) $ whenmod 3 2 (slow 2) $ slow 8 $ every 2 rev $
   striate 128 $ s "[ice plode]*2" -- (0) ice plode (2) ice wtsn
-  # cutoff "441" -- 0.02 * (44100/2)
-  # resonance "0.001"
-  # speed "0.7"
-  # gain "0.7"
+  # cutoff 441 -- 0.02 * (44100/2)
+  # resonance 0.001
+  # speed 0.7
+  # gain 0.7
   -- # vowel "u e" -- (2)
 
 -- @p4drum + @p4perc
 d'drum $ sound "[k sn k*2 [~ sn] [~ k]]/5"
-d'perc $ smash 4 [0.5,0.25] $ iter 3 $ sound "[[~ [wt wtsn]] ~ wt ~]/5"
+d'perc $ smash 4 [0.5,0.25] $ iter 4 $ sound "[[~ [wt wtsn]] ~ wt ~]/5"
 
 d'bz $ (0.5 <~) $ slow 16 . chop 32 $ s "bzl"
   # n (density 1.5 "0 1")
   # speed (scale 1 2 $ density 1.7 sine1)
-  # gain "0.9"
+  # gain 0.9
 
 d'misc silence
 -- ~p4shard @ (1)
@@ -294,12 +263,12 @@ d'drum $ sound "[[k k:1]*2 sn k*2 [~ sn] [~ k]]/5"
 
 d'bass $ (0.75 ~>) $
   -- @p4bass
-  whenmod 5 3 (density (3%2) . brak) $
+  whenmod 5 3 (density (3/2) . brak) $
   bassP $
   rev $ (0.5 ~>) $ slow 2 . chop 8 $ n "[0 1]/2" # s "dubb"
-  # speed "0.5"
-  # cut "1"
-  # end "0.5"
+  # speed 0.5
+  # cut 1
+  # end 0.5
 
 msil [d'perc, d'bz, d'shard]
 
@@ -318,7 +287,7 @@ d'drum $ sound "[k*2 sn [~ k] sn]/4"
 -- ~p4shard @ (2)
 -- ~p4bz @ (2)
 
-d'perc $ smash 4 [0.5,0.25] $ iter 3 $ sound "[[~ [wt wtsn]] ~ wt ~]/5"
+d'perc $ smash 4 [0.5,0.25] $ iter 4 $ sound "[[~ [wt wtsn]] ~ wt ~]/5"
 d'drum silence
 d'drum $ sound "[[k ~ ~ k] sn [~ k] sn]/4"
 
@@ -440,11 +409,11 @@ d'bass $ (# gain (scale 0 0.7 $ saw1)) $
 msil [d'drum, d'fly]
 
 -- @p6bass
-d'bz $ within (0, 0.5) (slow (7%6)) $
+d'bz $ within (0, 0.5) (slow (7/6)) $
   every 2 (0.5 <~) $ slow 8 $
   bass' 32
 
-d'fly $ superimpose (slow (5%3) . iter 2) $
+d'fly $ superimpose (slow (5/3) . iter 3) $
   (# speed (scale 0.7 1.7 $ slow 1.1 sine1)) $
   chop 32 $ s "[plode(5,8)]/8"
   # cut "1"
@@ -463,7 +432,7 @@ d'drum $ sound "{k, [~ ~ ~ k:1] [~ k:1]}" -- @p6drum
 d'misc $ slow 16 $ bass' 64
 
 -- @p6cymb
-d'cymb $ density (5%4) $ whenmod 9 4 (density 1.5) $ -- (1)
+d'cymb $ density (5/4) $ whenmod 9 4 (density 1.5) $ -- (1)
   s "[cymb*8 ~]/8"
   # gain (scale 0.6 0.8 $ density 3.6 saw1)
   # cut "1"
@@ -477,7 +446,7 @@ d'drum $ sound "{k, [~ ~ ~ k:1] [~ k:1], [~ sn ~ sn*2]/8}" -- @p6drum-sn
 
 d'bass $ (0.6 ~>) $
   -- ~p4bass
-  whenmod 5 3 (density (3%2) . brak) $
+  whenmod 5 3 (density (3/2) . brak) $
   bassP $
   rev $ (0.5 ~>) $ slow 2 . chop 8 $ n "[0 1]/2" # s "dubb"
   # speed "0.5"
@@ -488,7 +457,7 @@ msil [d'perc, d'gnome, d'misc]
 
 -- @p6gnome
 let d = 5 -- (0) 5 (1) 3
-  in d'gnome $ iter 4 $ density (9%8) $
+  in d'gnome $ iter 5 $ density (9/8) $
      within (0, 0.5) rev $
      smash 8 [1,2] $ s "[gnome(3,8)]/2"
      # gain "0.8"
@@ -697,8 +666,8 @@ d'misc $ stack [
 d'drum $ s "[k*2 [sn ~ ~ k] [k k*2] sn]/4"
 
 -- ~p4shard
-d'shard $ whenmod 7 3 (density (5%4)) $
-  within (0.5, 0.75) (iter 4) $
+d'shard $ whenmod 7 3 (density (5/4)) $
+  within (0.5, 0.75) (iter 5) $
   whenmod 3 2 (slow 2) $
   slow 8 $ every 2 rev $ striate 128 $ s "[ice plode]*2"
   # cutoff "441" -- 0.02 * (44100/2)
@@ -727,7 +696,7 @@ d'cymb $ (3 ~>) $
 
 -- ~p6gnome
 let d = 5 -- (0) 5 (1) 3
-  in d'gnome $ iter 4 $ density (9%8) $
+  in d'gnome $ iter 5 $ density (9/8) $
      within (0, 0.5) rev $
      smash 8 [1,2] $ s "[gnome(3,8)]/2"
      # gain "0.8"
@@ -735,7 +704,7 @@ let d = 5 -- (0) 5 (1) 3
 
 -- ~p3shard
 d'bz $ -- within (0.5, 1) (density 2) $ -- (1)
-  iter 4 . density 2 $ (0.5 <~) $ ((1%16) <~) $
+  iter 5 . density 2 $ (0.5 <~) $ ((1%16) <~) $
   chop 16 $ s "[ice [~ ice] ~ ~]/4"
   # vowel "e o"
   # gain "0.6"
