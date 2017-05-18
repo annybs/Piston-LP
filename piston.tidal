@@ -125,7 +125,7 @@ d'fly $ chop 64 $ s "[fly ~ [fly ~ ~ fly] ~]/4"
 
 d'drum $ 0.5 <~ sound "[[k k:1] [sn ~ ~ k]]/2"
 
--- ~p2bass 
+-- ~p2bass
 
 d'cymb $ (0.25 ~>) $
   -- @p2cymb
