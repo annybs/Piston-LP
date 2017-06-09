@@ -138,7 +138,7 @@ d'perc $ s "wt*2"
   # vowel "[u e u a]/2"
   # end 0.15
 
--- p2bass @ (1)
+-- p2bass @ 1
 
 -- @p2shardb
 d'shard $
@@ -260,7 +260,7 @@ d'bz $ (0.5 <~) $ slow 16 . chop 32 $ s "bzl"
   # gain 0.9
 
 d'misc silence
--- p4shard @ (1)
+-- p4shard @ 1
 d'drum $ sound "[[k k:1]*2 sn k*2 [~ sn] [~ k]]/5"
 
 d'bass $ (0.75 ~>) $
@@ -285,17 +285,17 @@ d'bz $ -- every 3 brak $ -- (0) off (2) 3 (4) 2
   # pan (scale 0.25 0.75 $ density 4.1 sine1)
 
 d'drum $ sound "[k*2 sn [~ k] sn]/4"
--- p4bz @ (1)
--- p4shard @ (2)
--- p4bz @ (2)
+-- p4bz @ 1
+-- p4shard @ 2
+-- p4bz @ 2
 
 d'perc $ smash 4 [0.5,0.25] $ iter 4 $ sound "[[~ [wt wtsn]] ~ wt ~]/5"
 d'drum silence
 d'drum $ sound "[[k ~ ~ k] sn [~ k] sn]/4"
 
--- p4bz @ (3)
+-- p4bz @ 3
 msil [d'perc,d'bass,d'shard]
--- p4bz @ (4)
+-- p4bz @ 4
 
 {-
 @p5
@@ -345,17 +345,17 @@ d'bass $ -- within (0.5, 0.75) (# vowel "u o") $ -- (4), delete in (5)
 
 d'fly silence
 
--- p5bass @ (1)
--- p5bass @ (2)
+-- p5bass @ 1
+-- p5bass @ 2
 
 d'bz $ whenmod 4 3 (density 1.8) $ -- (1)
   chop 12 $ sound "[~ ~ [~ k:1] !]/4"
   # speed 0.9
   # shape (scale 0 (1/3) $ density 3 sine1) -- (2)
 
--- p5bass2 @ (1)
--- p5bass @ (3)
--- p5bass2 @ (2)
+-- p5bass2 @ 1
+-- p5bass @ 3
+-- p5bass2 @ 2
 
 -- @p5gnome
 let g sm f = smash 64 sm $ s "~ gnome" # pan (f $ slow 4 sine1)
@@ -368,7 +368,7 @@ let g sm f = smash 64 sm $ s "~ gnome" # pan (f $ slow 4 sine1)
      # shape ((0.25 ~>) $ scale 0 0.5 $ density 3 sine1)
      # gain 0.6
 
--- @p5bass @ (4)
+-- @p5bass @ 4
 
 msil [d'drum, d'bass]
 d'drum $ sound "k:1"
@@ -385,7 +385,7 @@ d'bz $ -- within (0, 0.5) rev -- (1)
   # delaytime 0.2875 --(138/60)/8
 
 -- p5fly w/ b=brak
--- p5bass @ (5)
+-- p5bass @ 5
 d'drum $ sound "{k, [~ ~ ~ k:1], [~ sn]/2}"
 
 msil [d'perc, d'bz]
@@ -551,12 +551,12 @@ let bm f = scale f (0.5 + f) $ density (5/4) sine1
      slowspread ($) [rev.chop 12, rev.chop 24] $
      bassP $ n "[0 1]/2" # s "dubb"
 
--- p7shard @ (0)
+-- p7shard @ 0
 
 d'drum $ s "{[k k]/2, ~ sn}" -- @p7drum2a
 d'drum $ s "{[[k ~ k] k]/2, ~ sn}" -- @p7drum2b
 
--- p7shard @ (1)
+-- p7shard @ 1
 
 msil [d'bass, d'shard]
 
@@ -709,12 +709,12 @@ d'bz $ -- within (0.5, 1) (density 2) $ -- (1)
   # vowel "e o"
   # gain 0.6
 
--- p6gnome @ (1)
--- p3shard @ (1)
+-- p6gnome @ 1
+-- p3shard @ 1
 
 msil [d'fly, d'shard, d'bz, d'misc, d'cymb]
 
--- @p8bass @ (0)
+-- @p8bass @ 0
 
 d'cymb $ (2.75 ~>) $
   -- p2cymb
