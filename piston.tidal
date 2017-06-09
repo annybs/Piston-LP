@@ -26,8 +26,7 @@ let bpm b = cps (b/60)
 
 {-
 @p1
-Anny: Piston I
-anny.audio | pistonlp.co.uk
+Piston I
 -}
 
 bpm 138
@@ -83,8 +82,7 @@ d'drum $ overlay (3.75 ~> s "wtsn/4") $ s "[k(3,8), ~ sn]/2"
 
 {-
 @p2
-Anny: Piston II
-anny.audio | pistonlp.co.uk
+Piston II
 -}
 
 bpm 138
@@ -156,8 +154,7 @@ d'perc $ s "~ wt*2"
 
 {-
 @p3
-Anny: Piston III
-anny.audio | pistonlp.co.uk
+Piston III
 -}
 
 bpm 138
@@ -226,8 +223,7 @@ d'gnome $ within (0, 0.5) rev $ chop 8 $ s "[gnome(3,8)]/2"
 
 {-
 @p4
-Anny: Piston IV
-anny.audio | pistonlp.co.uk
+Piston IV
 -}
 
 bpm 138
@@ -299,8 +295,7 @@ msil [d'perc,d'bass,d'shard]
 
 {-
 @p5
-Anny: Piston V
-anny.audio | pistonlp.co.uk
+Piston V
 -}
 
 bpm 138
@@ -393,8 +388,7 @@ d'gnome silence
 
 {-
 @p6
-Anny: Piston VI
-anny.audio | pistonlp.co.uk
+Piston VI
 -}
 
 bpm 138
@@ -491,8 +485,7 @@ msil [d'perc, d'fly, d'bz]
 
 {-
 @p7
-Anny: Piston VII
-anny.audio | pistonlp.co.uk
+Piston VII
 -}
 
 bpm 138
@@ -573,8 +566,7 @@ d'bz silence
 
 {-
 @p8
-Anny: Piston VIII
-anny.audio | pistonlp.co.uk
+Piston VIII
 -}
 
 bpm 138
