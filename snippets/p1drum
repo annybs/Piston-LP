@@ -6,7 +6,7 @@
 # --
 -- @p1drum
 d'perc $ s "${1:wt}/2"
-d'drum $ sound "${2:k}"
+d'drum $ sound "${2:k}:1"
 
 d'perc $ s "{$1/2, [~ ${3:wtsn}]/8}"
 
