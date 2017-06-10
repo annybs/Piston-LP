@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: p5perc
+# group: pistonlp
+# key: p5perc
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p5perc
+d'perc $ s "~ ${1:wt} $1 ${2:wtsn}/8"
+  # shape (scale 0 0.5 $ density 1.2 saw1)

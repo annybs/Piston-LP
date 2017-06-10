@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: p2cymb
+# group: pistonlp
+# key: p2cymb
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p2cymb
+let o = (0.25 ~>)
+    g = 0.65
+  in d'cymb $ o $
+     within (0.5, 1) (# vowel "e") $ (0.5 ~>) $ chop 2 $ s "[${1:cymb}*4 $1*3]/8"
+     # shape (scale 0 (1/3) $ density 3.6 saw1)
+     # gain g

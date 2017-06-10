@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: p5drum
+# group: pistonlp
+# key: p5drum
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p5drum
+d'drum $ overlay (s "[[${1:k} ~ ~ $1] ~ [~ $1] ~]/4") $ sound "{[~ ~ ~ $1:1], [~ ${2:sn}]/2}"
+
+d'drum $ sound "{[~ ~ ~ $1:1], [~ $2]/2}"
+d'drum $ sound "{$1, [~ ~ ~ $1:1], [~ $2]/2}"
+
+d'drum $ sound "$1:1"

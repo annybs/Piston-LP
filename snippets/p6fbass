@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: p6fbass
+# group: pistonlp
+# key: p6fbass
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p6fbass
+d'misc $ slow 16 $ rev . chop 64 $ bassP $ n "[0 1]/2" # s "${1:dubb}"

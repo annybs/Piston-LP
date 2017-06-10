@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: p2ant
+# group: pistonlp
+# key: p2ant
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p2ant
+d'ant $ slow 2 $ smash 16 [1,2] $ sound "${1:ant}:1"
+  # cutoff 1764 -- 0.08 * (44100/2)
+  # resonance 0.01

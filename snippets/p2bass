@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: p2bass
+# group: pistonlp
+# key: p2bass
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p2bass
+d'bass $ slow 8 $ ((1/8) <~) $ chop 32 $ bassP $ n "[0 1]/2" # s "${1:dubb}"
+  # speed 1.2
+  # shape (scale 0 0.5 $ density 4 sine1)
+  # cut 1
+  -- # vowel "u a" -- (1)

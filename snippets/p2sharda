@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: p2sharda
+# group: pistonlp
+# key: p2sharda
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p2sharda
+d'shard $ ((1/16) <~) $ chop 16 $ s "[${1:ice} [~ $1] ~ ~]/4"
+  # gain 0.7

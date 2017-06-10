@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: p3bz
+# group: pistonlp
+# key: p3bz
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p3bz
+d'bz $ s "[${1:ff}(3,8) [~ [$1 ${2:bz}]]]/4"
+  # end 0.3
+  # shape "0 0.25"
+  # gain 0.7

@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: p4shard
+# group: pistonlp
+# key: p4shard
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p4shard
+d'shard $
+  -- whenmod 7 3 (density (5/4)) $ -- (1)
+  within (0.5, 0.75) (iter 5) $ whenmod 3 2 (slow 2) $ slow 8 $ every 2 rev $
+  striate 128 $ s "[${1:ice} ${2:plode}]*2" -- (2) ice wtsn
+  # cutoff 441 -- 0.02 * (44100/2)
+  # resonance 0.001
+  # speed 0.7
+  # gain 0.7
+  -- # vowel "u e" -- (2)

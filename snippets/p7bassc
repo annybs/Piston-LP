@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: p7bassc
+# group: pistonlp
+# key: p7bassc
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p7bassc
+d'bass $ slow 8 $
+  within (0.33, 0.67) (0.25 ~>) $
+  slowspread (\c -> rev . chop c) [12, 24] $
+  bassP $ n "[0 1]/2" # s "${1:dubb}"
+  # vowel "o"

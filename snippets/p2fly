@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: p2fly
+# group: pistonlp
+# key: p2fly
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p2fly
+d'fly $ chop 64 $ s "[${1:fly} ~ [$1 ~ ~ $1] ~]/4"
+  # cut 1
+  # begin 0.3
+  # end 0.35
+  # shape (scale 0.25 0.75 $ density 8 sine1)
+  # speed (scale 0.92 1.92 $ density (5/4) saw1)

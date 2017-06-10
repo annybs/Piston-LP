@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: p7fly
+# group: pistonlp
+# key: p7fly
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p7fly
+d'fly $ slow (4/3) .
+  slowspread ($) [slow 1, density (5/4)] $
+  slow 12 $
+  slowspread striate [24,36] $ sound "${1:fly:1}"
+  # gain 0.7
+  {- (1)
+  # orbit 2
+  # delay 0.6
+  # delayfeedback 0.4
+  # delaytime 0.62 --(112/60)/3
+  -- -}

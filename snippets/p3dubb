@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: p3dubb
+# group: pistonlp
+# key: p3dubb
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p3dubb
+d'misc $ slow 8 $ chop 16 $ bassP $ n "[0 1]/2" # s "${1:dubb}"
+  # cut 1
+  # speed 0.2
+  # vowel "e"

@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: p4bass
+# group: pistonlp
+# key: p4bass
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p4bass
+let o = 0.75
+  in d'bass $ (o ~>) $
+  whenmod 5 3 (density (3/2) . brak) $
+  bassP $
+  rev $ (0.5 ~>) $ slow 2 . chop 8 $ n "[0 1]/2" # s "${1:dubb}"
+  # speed 0.5
+  # cut 1
+  # end 0.5

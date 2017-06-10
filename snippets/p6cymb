@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: p6cymb
+# group: pistonlp
+# key: p6cymb
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p6cymb
+d'cymb $
+  -- density (5/4) $ whenmod 9 4 (density 1.5) $ -- (1)
+  s "[${1:cymb}*8 ~]/8"
+  # gain (scale 0.6 0.8 $ density 3.6 saw1)
+  # cut 1

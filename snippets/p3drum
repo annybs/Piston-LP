@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: p3drum
+# group: pistonlp
+# key: p3drum
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p3drum
+d'drum $ s "${1:k}"
+d'drum $ s "[$1 $1 ${2:sn} $1]/2"
+
+d'drum $ s "{[$1*2 [~ $1*2] $1 ~ $1*2 ~ $1*2 ~]/8, [~ $2]/2}"

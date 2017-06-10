@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: p7drum
+# group: pistonlp
+# key: p7drum
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p7drum
+d'drum $ whenmod 3 2 (slow (4/3)) $ s "[${1:k}*2 [${2:sn} ~ ~ ${3:wt}] $1*2 $2 [~ $1]]/5"
+
+d'drum $ every 3 (density 2) $ within (0, 0.5) (jux ((1/3) ~>)) $
+  s "[$1 [$2 ~ $1] [~ ~ $2] ~]/8"
+
+d'drum $ s "[$1 [$2 ~ $1] [~ ~ $2] ~]/8"
+
+d'drum $ s "{[$1 $1]/2, ~ $2}"
+d'drum $ s "{[[$1 ~ $1] $1]/2, ~ $2}"
+
+d'drum $ within (0, 0.5) (jux ((1/3) ~>)) $ s "[$1 [$2 ~ $1] [~ ~ $2] ~]/8"

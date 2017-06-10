@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: p2perc
+# group: pistonlp
+# key: p2perc
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p2perc
+d'perc $ s "${1:wt}*2"
+  # vowel "[u e u a]/2"
+  # end 0.15

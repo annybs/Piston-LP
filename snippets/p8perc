@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: p8perc
+# group: pistonlp
+# key: p8perc
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p8perc
+-- solo $
+d'perc $ stack [
+  {- -- (3)
+  -- (p1fly @ 2)
+  whenmod 5 2 (# vowel "i o") $ whenmod 3 1 (slow 2) $ brak $
+  slow 16 $ jux (0.5 <~) $ rev . striate 256 $ s "${1:fly}"
+  # hcutoff 1985 -- 0.09 * (44100/2)
+  # hresonance 0.06,
+  -- -}
+  -- (p1perc)
+  -- within (0.5, 1) (slow 1.5 . chop 4) $ -- (4)
+  -- whenmod 5 3 (rev) $ -- (1) (2) rev . chop 8
+  density (4/3) $
+  s "[${2:wtsn} ~ ${3:wt}]"
+  ]

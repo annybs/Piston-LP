@@ -1,0 +1,58 @@
+# -*- mode: snippet -*-
+# name: pistonlp
+# group: pistonlp
+# key: pistonlp
+# expand-env: (yas-indent-line fixed)
+# --
+plpsetup
+p1fly
+p1drum
+p1bass
+p1perc
+p1gnome
+p1bassout
+p2drum
+p2perc
+p2bass
+p2ant
+p2sharda
+p2fly
+p2cymb
+p2shardb
+p3perc
+p3drum
+p3bz
+p3bass
+p3dubb
+p3shard
+p4perc
+p4shard
+p4drum
+p4bz
+p4bass
+p4bz2
+p5perc
+p5drum
+p5bass
+p5fly
+p5bass2
+p5gnome
+p6bass
+p6plode
+p6cymb
+p6drum
+p6fbass
+p6wtsn
+p6gnome
+p7drum
+p7shard
+p7perc
+p7bassa
+p7fly
+p7bz
+p7bassb
+p7bassc
+p8drum
+p8bz
+p8perc
+p8bass

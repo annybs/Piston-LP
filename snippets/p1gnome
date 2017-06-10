@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: p1gnome
+# group: pistonlp
+# key: p1gnome
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p1gnome
+d'gnome $ within (0, 0.5) rev $ chop 8 $ s "[${1:gnome}(3,8)]/2"
+  # gain 0.8
+  # speed (scale 0.8 1 $ slow 1.1 sine1)

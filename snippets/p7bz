@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: p7bz
+# group: pistonlp
+# key: p7bz
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p7bz
+d'bz $ rev . chop 12 $ s "${1:bz}/4"
+  # vowel "o"

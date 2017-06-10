@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: p7perc
+# group: pistonlp
+# key: p7perc
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p7perc
+d'perc $ s "[${1:wt}*3 ~]/2"
+  # shape (scale 0 0.5 $ slow 3 saw1)

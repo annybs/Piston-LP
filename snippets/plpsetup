@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: plpsetup
+# group: pistonlp
+# key: plpsetup
+# expand-env: (yas-indent-line fixed)
+# --
+let bpm b = cps (b/60)
+    msil = mapM_ ($ silence)
+    bassP = (# gain 0.7) . (# hcutoff 485) . (# hresonance 0.001)
+    d'drum = d1
+    d'perc = d2
+    d'gnome = d3
+    d'bass = d4
+    d'fly = d5
+    d'bz = d6
+    d'shard = d7
+    d'misc = d8
+    d'ant = d9
+    d'cymb = d10

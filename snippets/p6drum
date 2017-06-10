@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: p6drum
+# group: pistonlp
+# key: p6drum
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p6drum
+d'drum $ sound "{${1:k}, [~ ~ ~ $1:1] [~ $1:1]}"
+
+d'drum $ stack [
+  sound "{$1, [~ ~ ~ $1:1] [~ $1:1]}",
+  s "[~ ${2:sn} ~ $2*2]/8"
+  ]
+
+d'drum $ sound "[[$1 $1:1]*2 [$2 $1:1 ~ $1] [~ $1:1 $1 ~] [~ $2 ~ $1]]/8"

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: p7bassa
+# group: pistonlp
+# key: p7bassa
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p7bassa
+d'bass $ slow 8 $
+  slowspread (\c -> rev . chop c) [12, 24] $
+  bassP $ n "[0 1]/2" # s "${1:dubb}"

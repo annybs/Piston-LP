@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: p7shard
+# group: pistonlp
+# key: p7shard
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p7shard
+d'shard $ slow 5 . chop 15 $ s "${1:ice}"
+  # gain 0.7
+  # resonance 0.4
+  # cutoff 4410 -- 0.2 * (44100/2)
+  # orbit 1
+  # delay 0.7
+  # delayfeedback 0.3
+  # delaytime 0.02 -- (0) 0.02 (1) 0.76

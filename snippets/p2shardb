@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: p2shardb
+# group: pistonlp
+# key: p2shardb
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p2shardb
+d'shard $
+  -- every 2 (density 1.5) $ whenmod 5 3 (density 2) $ -- (1)
+  rev $
+  chop 16 $ s "[${1:ice} [~ $1] ~ ~]/4"
+  # gain 0.7
+  # shape (scale 0.25 0.75 $ density 8 saw1)

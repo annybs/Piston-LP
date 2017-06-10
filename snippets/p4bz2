@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: p4bz2
+# group: pistonlp
+# key: p4bz2
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p4bz2
+d'bz $ -- every 3 brak $ -- (2) ev3 (4) ev2 (5) ev3
+  whenmod 7 4 (within (0.5, 1) (density 2)) $
+  (0.5 <~) $
+  slow 16 . chop 32 $
+  s "${1:bz}" -- (0) bz (1) bz*2 (3) bz bzl (4) bz*2 (5) ~ bzl
+  # n (density 1.5 "0 1")
+  # speed (scale 1.6 2.6 $ density 2.2 sine1)
+  # pan (scale 0.25 0.75 $ density 4.1 sine1)

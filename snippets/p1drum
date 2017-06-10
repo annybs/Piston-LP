@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: p1drum
+# group: pistonlp
+# key: p1drum
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p1drum
+d'perc $ s "${1:wt}/2"
+d'drum $ sound "${2:k}"
+
+d'perc $ s "{$1/2, [~ ${3:wtsn}]/8}"
+
+d'drum $ s "$2"
+d'drum $ s "[$2*2, [~ ${4:sn}]]/2"
+
+d'drum $ s "[$2*2, ~ [$4 [~ $4*3]/2]]/2"
+
+d'drum $ s "[$2(3,8)]/2"
+d'drum $ s "[$2(3,8), ~ $4]/2"
+d'drum $ s "[$2(3,8), ~ [$4 [~ $4*3]/2]]/2"
+
+d'drum $ within (0.5, 1) (chop 8) $ s "[$2(3,8), ~ [$4 [~ $4*3]/2]]/2"
+
+d'perc $ s "[~ $1*4 ~ $1*2 ~]/5"
+d'drum $ overlay (3.75 ~> s "$3/4") $ s "[$2(3,8), ~ $4]/2"

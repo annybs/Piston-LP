@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: p5fly
+# group: pistonlp
+# key: p5fly
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p5fly
+let b = id -- (0) id (1) brak
+  in d'fly $ whenmod 5 3 rev $ b $
+     slow 16 $ jux ((1.5 ~>) . rev) $
+     chop 64 $ bassP $ sound "${1:fly:1}"
+     # speed 0.7
+     # shape (scale 0 0.5 $ density 2.1 saw1)

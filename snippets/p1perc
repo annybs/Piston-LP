@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: p1perc
+# group: pistonlp
+# key: p1perc
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p1perc
+d'perc $
+  -- within (0.5, 1) (slow 1.5 . chop 4) $ -- (3)
+  -- whenmod 5 3 (rev) $ -- (1) (2) rev . chop 8
+  density (4/3) $
+  s "[${1:wtsn} ~ ${2:wt}]"

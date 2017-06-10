@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: p4bz
+# group: pistonlp
+# key: p4bz
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p4bz
+d'bz $ (0.5 <~) $ slow 16 . chop 32 $ s "${1:bzl}"
+  # n (density 1.5 "0 1")
+  # speed (scale 1 2 $ density 1.7 sine1)
+  # gain 0.9

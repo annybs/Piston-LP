@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: p6gnome
+# group: pistonlp
+# key: p6gnome
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p6gnome
+let d = 5 -- (0) 5 (1) 3
+  in d'gnome $ iter 5 $ density (9/8) $
+     within (0, 0.5) rev $
+     smash 8 [1,2] $ s "[${1:gnome}(3,8)]/2"
+     # gain 0.8
+     # speed (scale 0.76 (0.76 + 1/d) $ slow 1.1 sine1)

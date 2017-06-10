@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: p8bz
+# group: pistonlp
+# key: p8bz
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p8bz
+d'bz $ s "[[${1:ff} ${2:bz}]*2 [~ $2*2]]/2"
+  # n (slow 2 $ run 5)
+  # begin 0.7
+  # end 0.85
+  # hcutoff 882 -- 0.04 * (44100/2)
+  # hresonance 0.1
+  # shape (scale 0 0.2 $ slow (5/3) sine1)
+  # gain 0.8

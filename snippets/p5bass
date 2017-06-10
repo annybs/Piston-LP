@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: p5bass
+# group: pistonlp
+# key: p5bass
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p5bass
+d'bass $
+  -- (# gain (scale 0 0.7 $ saw1)) $ -- (6)
+  -- within (0.5, 0.75) (# vowel "u o") $ -- (5), (6) delete
+  -- every 2 (density 2) $ -- (2)
+  -- density 1.6 $ -- (1)
+  -- whenmod 3 2 (density 1.6) $ -- (4) replaces (1)
+  chop 16 $ bassP $ s "[~ ${1:dubb}]"
+  # n (slow 4 "0 1")
+  # cut 1
+  -- # speed (scale 0.75 1.25 $ slow 1.3 sine1) -- (3)

@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: p8bass
+# group: pistonlp
+# key: p8bass
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p8bass
+d'misc $ stack [
+  {- -- (1)
+  -- (p5bass)
+  every 2 (density 2) $ whenmod 3 2 (density 1.6) $
+  chop 16 $ bassP $ s "[~ ${1:dubb}]"
+  # n (slow 4 "0 1")
+  # cut 1
+  # speed (scale 0.75 1.25 $ slow 1.3 sine1),
+  (0.75 ~>) $
+  -- -}
+  -- (p4bass w/ o=id)
+  whenmod 5 3 (density (3/2) . brak) $
+  bassP $
+  rev $ (0.5 ~>) $ slow 2 . chop 8 $ n "[0 1]/2" # s "$1"
+  # speed 0.5
+  # cut 1
+  # end 0.5
+  ]

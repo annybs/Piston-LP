@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: p1bassout
+# group: pistonlp
+# key: p1bassout
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p1bassout
+d'bass $ (every 2 $ within (0.25, 0.75) (0.5 ~>)) $ slow 8 $ rev . chop 16 $ bassP $ n "[0 1]/2" # s "${1:dubb}"

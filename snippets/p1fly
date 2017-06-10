@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: p1fly
+# group: pistonlp
+# key: p1fly
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p1fly
+d'fly $
+  -- whenmod 5 2 (# vowel "i o") $ whenmod 3 1 (slow 2) $ brak $ -- (1)
+  slow 16 $ jux (0.5 <~) $ rev . striate 256 $ s "${1:fly}"
+  # hcutoff 1985 -- 0.09 * (44100/2)
+  # hresonance 0.06
+  # gain 1 -- 0.5 -> 1

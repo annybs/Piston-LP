@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: p6plode
+# group: pistonlp
+# key: p6plode
+# expand-env: (yas-indent-line fixed)
+# --
+-- @p6plode
+d'fly $ superimpose (slow (5/3) . iter 3) $
+  (# speed (scale 0.7 1.7 $ slow 1.1 sine1)) $
+  chop 32 $ s "[${1:plode}(5,8)]/8"
+  # cut 1
