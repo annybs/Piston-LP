@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: piston8
+# group: pistonlp
+# key: piston8
+# expand-env: (yas-indent-line fixed)
+# --
+plpsetup
+p8drum
+p6fbass
+p8bz
+p2ant
+p2fly
+p5bass
+p6cymb
+p8perc
+p1fly
+p8bass
+p4shard
+p5fly
+p6bass
+p6wtsn
+p6gnome
+p3shard
+p2cymb
+p4bz2
+p1perc

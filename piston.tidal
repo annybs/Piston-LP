@@ -366,7 +366,7 @@ d'bz $
   # delay 0.3
   # delayfeedback 0.2
   # delaytime 0.2875 --(138/60)/8
-  -}
+  -- -}
 
 -- p5bass2 @ 1
 -- p5bass @ 3

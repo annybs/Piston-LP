@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: piston7
+# group: pistonlp
+# key: piston7
+# expand-env: (yas-indent-line fixed)
+# --
+plpsetup
+p7drum
+p7shard
+p7perc
+p7bassa
+p7fly
+p7bz
+p7bassb
+p7bassc

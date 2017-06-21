@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: piston4
+# group: pistonlp
+# key: piston4
+# expand-env: (yas-indent-line fixed)
+# --
+plpsetup
+p3dubb
+p4perc
+p4shard
+p4drum
+p4bz
+p4bass
+p4bz2

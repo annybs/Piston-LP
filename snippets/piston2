@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: piston2
+# group: pistonlp
+# key: piston2
+# expand-env: (yas-indent-line fixed)
+# --
+plpsetup
+p2drum
+p2perc
+p2bass
+p2ant
+p2sharda
+p2fly
+p2cymb
+p2shardb

@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: piston1
+# group: pistonlp
+# key: piston1
+# expand-env: (yas-indent-line fixed)
+# --
+plpsetup
+p1fly
+p1drum
+p1bass
+p1perc
+p1gnome
+p1bassout

@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: piston3
+# group: pistonlp
+# key: piston3
+# expand-env: (yas-indent-line fixed)
+# --
+plpsetup
+p3perc
+p3drum
+p3bz
+p3bass
+p3dubb
+p3shard
+p1gnome
