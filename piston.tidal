@@ -415,7 +415,7 @@ d'bz $ within (0, 0.5) (slow (7/6)) $
   rev . chop 32 $ bassP $ n "[0 1]/2" # s "dubb"
 
 -- @p6plode
-d'fly $ superimpose (slow (5/3) . iter 3) $
+d'fly $ superimpose (slow (5/3) . iter 2) $
   (# speed (scale 0.7 1.7 $ slow 1.1 sine1)) $
   chop 32 $ s "[plode(5,8)]/8"
   # cut 1
