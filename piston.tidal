@@ -227,7 +227,7 @@ d'drum $ s "{[k*2 [~ k*2] k ~ k*2 ~ k*2 ~]/8, [~ sn]/2}"
 -- p3perc @ 5
 
 -- @p3shard
-d'shard $ -- iter 5 . density 2 $ -- (1)
+d'shard $ -- iter 4 . density 2 $ -- (1)
   -- (p2sharda)
   (0.5 <~) $ ((1/16) <~) $ chop 16 $ s "[ice [~ ice] ~ ~]/4"
   # gain 0.7 -- (0) 0.7 (1) 0.6
@@ -251,7 +251,7 @@ d'perc $
 -- @p4shard
 d'shard $
   -- whenmod 7 3 (density (5/4)) $ -- (1)
-  within (0.5, 0.75) (iter 5) $ whenmod 3 2 (slow 2) $ slow 8 $ every 2 rev $
+  within (0.5, 0.75) (iter 4) $ whenmod 3 2 (slow 2) $ slow 8 $ every 2 rev $
   striate 128 $ s "[ice plode]*2" -- (2) ice wtsn
   # cutoff 441 -- 0.02 * (44100/2)
   # resonance 0.001

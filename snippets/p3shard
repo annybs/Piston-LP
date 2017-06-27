@@ -5,7 +5,7 @@
 # expand-env: (yas-indent-line fixed)
 # --
 -- @p3shard
-d'shard $ -- iter 5 . density 2 $ -- (1)
+d'shard $ -- iter 4 . density 2 $ -- (1)
   -- (p2sharda)
   (0.5 <~) $ ((1/16) <~) $ chop 16 $ s "[${1:ice} [~ $1] ~ ~]/4"
   # gain 0.7 -- (0) 0.7 (1) 0.6
